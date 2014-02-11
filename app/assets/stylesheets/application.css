@@ -10,7 +10,7 @@
  *
  *= require_self
  *= semantic.css
- *= fonts
+ *= require_fonts
  *= require_tree .
  */
 
