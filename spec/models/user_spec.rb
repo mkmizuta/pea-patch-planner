@@ -34,6 +34,12 @@ describe User do
       expect(user2.errors[:email]).to_not be_empty
     end
 
+    it "email address has an @" do
+      user.update(email: 'e.com')
+
+      expect(user.errors[:email]).to_not be_empty
+    end
+
     it "has a twitter uid" do
       user.update(uid: nil)
 
@@ -52,8 +58,6 @@ describe User do
 
       expect(user.errors[:uid]).to be_empty
     end
-
-    it "has a admin boolean value assigned"
   end
 end
 
