@@ -41,4 +41,8 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include FactoryGirl::Syntax::Methods
+  config.order = "--seed 1234"
+  config.before(:each) do 
+    class SessionsController; end
+  end
 end

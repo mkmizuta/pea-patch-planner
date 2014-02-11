@@ -29,6 +29,7 @@ GEM
     atomic (1.1.14)
     autoprefixer-rails (1.0.20140203)
       execjs
+    bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -195,6 +196,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  bcrypt-ruby (~> 3.1.2)
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
