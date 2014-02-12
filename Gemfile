@@ -54,6 +54,14 @@ gem "httparty"
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
+
+gem 'figaro'
+gem 'twitter'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
