@@ -1,0 +1,26 @@
+<h1>Stone Soup Sign Up</h1>
+
+<%= form_for @user, url: {action: "create"} do | f | %>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+    <%= f.label :username %>:<br>
+    <%= f.text_field :username %>
+    <br>
+    <%= f.label :email %>:<br>
+    <%= f.text_field :email %>
+    <br>
+    <%= f.label :password %>:<br>
+    <%= f.text_field :password %>
+    <br>
+    <%= f.label :password_confirmation %>:<br>
+    <%= f.text_field :password_confirmation %>
+    <br>
+    <%= submit_tag("Sign me up!") %>
+
+<% end %>

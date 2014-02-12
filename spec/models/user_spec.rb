@@ -58,7 +58,13 @@ describe User do
 
       expect(user.errors[:uid]).to be_empty
     end
+
+  describe "#password_digest" do
+    it "exists after create" do
+      expect(user.password_digest).to_not be_nil
+    end
   end
+end
 end
 
 
