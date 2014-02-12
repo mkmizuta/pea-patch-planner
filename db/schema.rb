@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140211220632) do
 
   create_table "days_weathers", force: true do |t|
     t.string  "description"
-    t.integer "forcast_association"
+    t.integer "forecast_association"
     t.float   "temp"
     t.string  "icon"
     t.integer "place_value"

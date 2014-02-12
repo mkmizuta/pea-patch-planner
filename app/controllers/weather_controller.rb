@@ -4,7 +4,6 @@ class WeatherController < ApplicationController
     create_forecast
     (0..2).each do |place_value|
       create_day(place_value)
-      raise
     end
     redirect_to root_path
   end
@@ -19,7 +18,7 @@ class WeatherController < ApplicationController
 
   def create_day(place_value)
     @day = DaysWeather.new
-    @day.forcast_association = Weather.last.id
+    @day.forecast_association = Weather.last.id
     @day.temp = @day.forecast_temp(place_value)
     @day.description = @day.forecast_description(place_value)
     @day.place_value = place_value
