@@ -78,6 +78,8 @@
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Today</h3>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
             </div>
           </div>
 
@@ -91,7 +93,7 @@
 
           <!-- find forecast
           find daysforecast in that forecast
-          find --> place_value 0 in daysforecast
+          find place_value 0 in daysforecast--> 
 
            <div class="column">
             <div class="ui fluid form segment">
