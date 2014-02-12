@@ -11,9 +11,9 @@ PeaPatchPlanner::Application.routes.draw do
   get '/signin',     to: 'sessions#new', as: :signin
   post '/signin',    to: 'sessions#create'
   # , as: :signin
-  get '/signout', to: 'sessions#destroy', as: :signout
+  get '/signout', to: 'sessions#destroy', as: :signout 
   get 'signup', to: 'users#new'
-
+  post '/welcome', to: 'weather#create'
 
   # match "/auth/twitter/callback", to: "sessions#create", via: [:get, :post]
 end
