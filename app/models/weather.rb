@@ -5,7 +5,7 @@ class Weather < ActiveRecord::Base
   # Methods that allow access to current weather data
 
   def current_hash
-    HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response
+    HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["list"]
   end
 
   def current_description

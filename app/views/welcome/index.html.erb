@@ -8,6 +8,14 @@
   <h1 class="ui center aligned inverted green block header ">Seattle Stone Soup</h1>
 <p class="ui center aligned header">A neighborly interface to our local pea patch</p>
 </div>
+
+<div>
+<%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
+  <% f.submit %>
+  <% end %>
+</div>
+
+
 <!-- sign in and sign up: to only be visable to non users -->
 <!-- Log In -->
 <div class="ui vertically divided grid">

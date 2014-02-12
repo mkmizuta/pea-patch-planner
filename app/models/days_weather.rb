@@ -5,6 +5,9 @@ class DaysWeather < ActiveRecord::Base
   validates :place_value, presence: true
   validates :forecast_association, presence:true
 
+
+  attr_accessor :forecast_association
+
   # Methods that allow access to forecast daily weather data
 
   def forecast_array
