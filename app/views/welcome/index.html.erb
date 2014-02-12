@@ -83,7 +83,7 @@
             </div>
           </div>
 
-           <div class="column">
+          <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Tomorrow</h3>
               <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
@@ -91,11 +91,7 @@
             </div>
           </div>
 
-          <!-- find forecast
-          find daysforecast in that forecast
-          find place_value 0 in daysforecast--> 
-
-           <div class="column">
+          <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Next</h3>
               <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
@@ -103,7 +99,7 @@
             </div>
           </div>
 
-           <div class="column">
+          <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Then</h3>
               <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
