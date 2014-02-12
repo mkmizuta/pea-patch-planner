@@ -35,9 +35,6 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-<<<<<<< HEAD
-=======
-
 gem 'figaro'
 gem 'twitter'
 
@@ -50,7 +47,6 @@ gem 'omniauth-twitter'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
->>>>>>> c50692ac8f70e7e1e8cd7720af00dfd253e2a969
 
 group :test do
   gem "launchy", "~> 2.4.2"
