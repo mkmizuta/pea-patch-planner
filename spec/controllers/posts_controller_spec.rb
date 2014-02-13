@@ -17,7 +17,7 @@ describe PostsController do
     end
 
     context 'with valid attributes' do
-      let(:valid_attributes) { {title: "Dogs", description: "This is a list of dogs", user_id: session[:user_id] } }
+      let(:valid_attributes) { {title: "Hello", post_text: "Hello World", user_id: session[:user_id] } }
       it 'creates a new blog'
       it 'a redirect'
       it 'changes blog count by 1'

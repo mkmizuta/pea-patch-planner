@@ -17,7 +17,7 @@ describe Blogpost do
     end
 
     it "is invalid without a user id" do
-      expect(List.new(user_id: nil)).to have(1).error_on(:user_id)
+      expect(Blog.new(user_id: nil)).to have(1).error_on(:user_id)
     end
   end
 end
