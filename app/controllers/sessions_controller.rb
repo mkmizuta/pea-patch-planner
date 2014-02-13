@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
-      session[:uid] = user.uid
+      session[:id] = user.id
       redirect_to :root, notice: 'Successfully signed in'
     else
       render :new
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:uid] = nil
+    session[:id] = nil
     redirect_to :root
     flash[:notice]= "Thanks for visiting"
   end
