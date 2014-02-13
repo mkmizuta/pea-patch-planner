@@ -1,23 +1,27 @@
 require 'spec_helper'
 
 describe Blogpost do
-  let(:admin) {create(:blog)}
+  let(:user) {create(:blogpost)}
   describe "validates" do
 
-    it "is valid" do
-      expect(blog).to be_valid
+    it "is valid with title, post_text and user_id " do
+      blogpost = Blogpost.new(
+      title: 'Title',
+      post_text: 'Blah, Blah, Blah carrots',
+      user_id: 'Bobthefarmer')
+      expect(blogpost).to be_valid
     end
 
     it "is invalid without a title" do
-      expect(Blog.new(title: nil)).to have(1).error_on(:title)
+      expect(Blogpost.new(title: nil)).to have(1).error_on(:title)
     end
 
-    it "is invalid without a body" do
-      expect(Blog.new(post_text: nil)).to have(1).error_on(:post_text)
+    it "is invalid without a post text" do
+      expect(Blogpost.new(post_text: nil)).to have(1).error_on(:post_text)
     end
 
     it "is invalid without a user id" do
-      expect(Blog.new(user_id: nil)).to have(1).error_on(:user_id)
+      expect(Blogpost.new(user_id: nil)).to have(1).error_on(:user_id)
     end
   end
 end

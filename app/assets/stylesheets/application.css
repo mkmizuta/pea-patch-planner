@@ -14,6 +14,16 @@
  *= require_tree .
  */
 
+/* body {
+  background: url(http://3.bp.blogspot.com/-_KddICSRuK8/Ug5hEozpQeI/AAAAAAAAKBw/qTxqMciHT6Q/s1600/fruits-and-vegetables.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;    
+    -o-background-size: cover;      
+    background-size: cover;         
+}*/
+ 
+ 
+
 .centercolumnbutton {
   padding-top: 60px;
   padding-bottom: 80px;
