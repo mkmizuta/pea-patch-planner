@@ -8,8 +8,3 @@ FactoryGirl.define do
   end
 
 end
-  # belongs_to :weather
-  # validates :temp, presence: true
-  # validates :description, presence: true
-  # validates :place_value, presence: true
-  # validates :forecast_association, presence:true
