@@ -1,1 +1,6 @@
 --color
+factories.rb
+/spec
+/config
+spec/factories.rb
+--format documentation
