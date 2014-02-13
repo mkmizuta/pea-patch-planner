@@ -8,7 +8,7 @@ class DaysWeather < ActiveRecord::Base
   # Methods that allow access to forecast daily weather data
 
   def forecast_array
-    HTTParty.get("http://api.openweathermap.org/data/2.5/forecast/daily?q=Seattle&cnt=3&units=imperial&mode=json").parsed_response["list"]
+    @forecast ||= HTTParty.get("http://api.openweathermap.org/data/2.5/forecast/daily?q=Seattle&cnt=3&units=imperial&mode=json").parsed_response["list"]
   end
 
   def forecast_description(place_value)

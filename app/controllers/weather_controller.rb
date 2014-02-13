@@ -13,7 +13,10 @@ class WeatherController < ApplicationController
   def create_forecast
     @forecast = Weather.new
     @forecast.dt = Time.now
-    @forecast.save
+    if @forecast.save
+    else
+      flash[:notice] = "Forecast could not be saved"
+    end
   end
 
   def create_day(place_value)
@@ -22,6 +25,9 @@ class WeatherController < ApplicationController
     @day.temp = @day.forecast_temp(place_value)
     @day.description = @day.forecast_description(place_value)
     @day.place_value = place_value
-    @day.save
+    if @day.save
+    else
+      flash[:notice] = "This day's could not be saved"
+    end
   end
 end
