@@ -4,7 +4,5 @@ FactoryGirl.define do
     description         'Snow'
     place_value          1
     forecast_association 1
-
   end
-
 end

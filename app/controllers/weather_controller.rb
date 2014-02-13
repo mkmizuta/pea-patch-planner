@@ -31,5 +31,3 @@ class WeatherController < ApplicationController
     end
   end
 end
-
-# Theory: Do I need Strong Params?... even though I don't have a form?
