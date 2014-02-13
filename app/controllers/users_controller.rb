@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).permit(:username, :email, :password, :password_confirmation))
     if @user.save
+      session[:id] = @user.id
       flash[:notice] = "You're now a farmer!"
       redirect_to action: :show
     else
@@ -15,8 +16,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end

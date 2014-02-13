@@ -1,29 +1,47 @@
-<!-- <div class="ui buttons">
-  <div class="ui button">Sign In</div>
-  <div class="or"></div>
-  <div class="ui positive button">Sign Up</div>
-</div> -->
+
+<!-- Sign Out and Profile Buttons that only show for signed in user -->
+<% if current_user %>
+  <div class="ui buttons">
+    <%= link_to signout_path do %>
+      <div class="ui button">Sign Out</div>
+    <% end %>
+    <div class="or"></div>
+    <%= link_to user_path do %>
+      <div class="ui positive button">Profile</div>
+    <% end %>
+  </div>
+<% end %>
+
 <!-- header with title and green background -->
 <div class= "ui segment">
+
   <h1 class="ui green center aligned header ">Seattle Stone Soup</h1>
 <p class="ui center aligned inverted green  header">A neighborly interface to our local pea patch</p>
 </div>
+<div class="welcome">
+  <% if current_user %>
+    <h4> Welcome  <%= current_user.username.titleize %> </h4>
+  <% end %>
+  
+</div>
 <!-- sign in and sign up: to only be visable to non users -->
-<!-- Log In -->
-<div class="ui vertically divided grid">
-  <div class="three column row">
+<!-- Log In only seen by current user-->
+<% if current_user.nil? %>
+  <div class="three column stackable ui grid">
     <div class="column">
       <div class="ui fluid form segment">
         <h3 class="ui header">Log-in</h3>
+        <%= form_tag url_for(:controller=>"sessions",:action=>"create") do %>
         <div class="field">
-          <label>Username</label>
-          <input placeholder="Username" type="text">
+          <%= label_tag :username %><br />
+          <%= text_field_tag :username, params[:username] %>
         </div>
         <div class="field">
-          <label>Password</label>
-          <input type="password">
+          <%= label_tag :password %><br />
+          <%= password_field_tag :password %>
         </div>
-        <div class="ui blue submit button">Login</div>
+        <div class="ui blue submit button"><%= submit_tag "Log in" %></div>
+        <% end %>
       </div>
     </div>
     <!-- Sign Up -->
@@ -31,12 +49,14 @@
     <div class="column">
       <div class="ui fluid form segment">
         <h3 class="ui header">New? Sign in to See it all.</h3>
-        <div class="centercolumnbutton">
+                <div class="centercolumnbutton">
           <div class="center aligned column">
+            <%= link_to signup_path do %>
             <div class="huge green ui labeled icon button">
             <i class="signup icon"></i>
              Sign Up
             </div>
+            <% end %>
           </div>
         </div>
     </div>
@@ -50,12 +70,10 @@
             <div class="ui blue button">
           <i class="twitter icon"></i>
           Sign In With <br> Twitter
-          
-           <%#= link_to "signin", "/signin" %>
         </div>
       </div>
     </div>
     </div>
   </div>
-</div>
-
+<% end %>
+<!-- end of log in that is only seen by current user -->

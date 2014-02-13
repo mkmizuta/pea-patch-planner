@@ -18,3 +18,11 @@
   padding-top: 60px;
   padding-bottom: 80px;
 }
+
+h1{
+  font-size: 70px;
+  text-align: center;
+}
+.signin {
+  max-width: 400px;
+}
