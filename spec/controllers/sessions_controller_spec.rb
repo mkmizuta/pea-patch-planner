@@ -20,9 +20,9 @@ describe SessionsController do
           expect(response.status).to eq 302
         end
     
-        it "sets the session[:uid] to the users id" do
+        it "sets the session[:id] to the users id" do
           post :create, username: user.username, password: user.password
-          expect(session[:uid]).to eq user.uid
+          expect(session[:id]).to eq user.id
         end
       
         it "sets a flash message" do
@@ -37,9 +37,9 @@ describe SessionsController do
           expect(response).to render_template :new
         end
     
-        it "don't set the session[:uid] to the users id" do
+        it "don't set the session[:id] to the users id" do
           post :create, username: user.username, password: "wrong"
-          expect(session[:uid]).to be_nil
+          expect(session[:id]).to be_nil
         end
       
         it "sets a flash message" do
@@ -66,17 +66,17 @@ describe SessionsController do
     context "when a user signs out" do
       let(:user) { create(:user) }
 
-      it "the uid in session should be nil" do
+      it "the id in session should be nil" do
         post :create, username: user.username, password: user.password
-        expect(session[:uid]).to eq user.uid
-        post :destroy, uid: user.uid
-        expect(session[:uid]).to eq nil
+        expect(session[:id]).to eq user.id
+        post :destroy, id: user.id
+        expect(session[:id]).to eq nil
       end
 
-      it "the uid in session should be nil" do
+      it "the id in session should be nil" do
         post :create, username: user.username, password: user.password
-        expect(session[:uid]).to eq user.uid
-        post :destroy, uid: user.uid
+        expect(session[:id]).to eq user.id
+        post :destroy, id: user.id
         expect(flash[:notice]).to_not be_blank
       end
     end

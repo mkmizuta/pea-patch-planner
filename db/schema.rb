@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211220632) do
+ActiveRecord::Schema.define(version: 20140213022434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blogposts", force: true do |t|
+    t.string   "title"
+    t.text     "post_text"
+    t.string   "pic_upload"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "days_weathers", force: true do |t|
     t.string  "description"
