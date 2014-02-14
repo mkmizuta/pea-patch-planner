@@ -2,9 +2,13 @@
 
 FactoryGirl.define do
   factory :blogpost do
-    title "MyString"
-    post_text "MyText"
+    title "MyTitle"
+    sequence :post_text do |n| 
+      "My Text #{n}"
+    end
     pic_upload "MyString"
-    user_id 
+    sequence :user_id do |n| 
+      n
+    end
   end
 end

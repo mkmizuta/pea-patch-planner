@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20140213182444) do
     t.integer "place_value"
   end
 
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "post_text"
+    t.string   "pic_upload"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string  "username"
     t.string  "uid"
