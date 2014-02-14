@@ -21,6 +21,10 @@ class SessionsController < ApplicationController
     end
   end
 
+
+# what if they don't sign out of twitter; anyone could sign in w/username
+
+
   def destroy
     session[:id] = nil
     redirect_to :root
