@@ -1,9 +1,6 @@
 class DaysWeather < ActiveRecord::Base
   belongs_to :weather
-  validates :temp, presence: true
-  validates :description, presence: true
-  validates :place_value, presence: true
-  validates :forecast_association, presence:true
+  validates :temp, :description, :place_value, :forecast_association, presence: true
 
   # Methods that allow access to forecast daily weather data
 

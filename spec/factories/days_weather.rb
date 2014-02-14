@@ -6,7 +6,7 @@ FactoryGirl.define do
     forecast_association
 
   end
-
+end
 
   # belongs_to :weather
   # validates :temp, presence: true
