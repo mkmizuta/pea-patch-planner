@@ -3,12 +3,10 @@
 FactoryGirl.define do
   factory :blogpost do
     title "MyTitle"
-    sequence :post_text do |n| 
-      "My Text #{n}"
-    end
+    user_id 1
     pic_upload "MyString"
-    sequence :user_id do |n| 
-      n
-    end
+    post_text "My Text"
+    
   end
 end
+

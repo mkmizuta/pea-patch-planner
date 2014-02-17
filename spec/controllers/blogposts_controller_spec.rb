@@ -10,37 +10,21 @@ describe BlogpostsController do
       get 'new', blogpost: create(:blogpost).id
       expect(response).to render_template :new
     end
-
-    it 'expects blog id to not be nil' do
-      get 'new', blogpost: create(:blogpost).id
-      expect(assigns(:blogpost).id).to_not be_nil
-    end
   end
 
   describe 'POST #create' do
     
     context 'with valid attributes' do
-      let(:blogpost) { create(:blogpost) }
-      let(:valid_attributes) { {title: "blogposttitle", post_text: "Etc, Etc, Etc", user_id: 9} }
-      
-      it "is a redirect" do
-        post :create, blogpost: valid_attributes
-        expect(response.status).to redirect_to blogpost_path(blogpost)
-      end 
-
-      it 'creates a new blog' do
-        post :create, blogpost: valid_attributes
-        expect(blogpost.id).to_not be_nil
-      end
+      let(:valid_attributes) { {title: "Title", post_text: "Test", user_id: 1} }
 
       it 'a redirect' do
         post :create, blogpost: valid_attributes
-        expect(reponse.status).to eq 302
+        expect(response.status).to eq 302
       end
 
       it 'changes blog count by 1' do
         post :create, blogpost: valid_attributes
-        expect { blogpost :create, blogpost: valid_attributes }.to change(Blogpost, :count).by(1)
+        expect { post :create, blogpost: valid_attributes }.to change(Blogpost, :count).by(1)
       end
 
       it 'sends a flash message' do
@@ -50,14 +34,12 @@ describe BlogpostsController do
     end 
 
     context 'with invalid attributes' do
-      let(:blogpost) { create(:blogpost) }
-      let(:invalid_attributes) { {title: "blogposttitle", post_text: " ", user_id: 9} }
-
       it 'does not create a new blog' do
-        expect { post :create, blogpost: invalid_attributes }.to change(Blogpost, :count).by(0)
+        expect { post :create, blogpost: {title: "Blah", post_text: nil, user_id: 1 }}.to change(Blogpost, :count).by(0)
       end
 
       it 'renders the new template' do
+        post :create, blogpost: {title: "Blah", post_text: nil, user_id: 1}
         expect(response).to render_template :new
       end
     end
@@ -65,11 +47,11 @@ describe BlogpostsController do
 
   describe 'GET #show' do
     let(:blogpost) { create(:blogpost) }
-    let(:valid_attributes) { {title: "blogposttitle", post_text: "Etc, Etc, Etc", user_id: 1} }
+    let(:valid_attributes) { {title: blogpost.title, post_text: blogpost.post_text, user_id: blogpost.user_id} }
 
     it 'assigns the requested blogpost to @blogpost' do
-      get :show, id: @blogpost
-      expect(assigns(:blogpost)).to eq(@blogpost)
+      get :show, id: blogpost
+      expect(assigns(:blogpost)).to eq(blogpost)
     end
 
     it "renders the :show template" do
@@ -80,7 +62,7 @@ describe BlogpostsController do
 
   describe 'GET #index' do
     let(:blogpost) { create(:blogpost) }
-    let(:valid_attributes) { {title: "blogposttitle", post_text: "Etc, Etc, Etc", user_id: 1} }
+    let(:valid_attributes) { {title: blogpost.title, post_text: blogpost.post_text, user_id: blogpost.user_id} }
 
     it 'shows index view' do
       get :index
@@ -93,9 +75,9 @@ describe BlogpostsController do
     end 
   end
 
-  describe 'POST #edit' do
+  describe 'GET #edit' do
     let(:blogpost) { create(:blogpost) }
-    let(:valid_attributes) { {title: "blogposttitle", post_text: "Etc, Etc, Etc", user_id: 1} }
+    let(:valid_attributes) { {title: blogpost.title, post_text: blogpost.post_text, user_id: blogpost.user_id} }
 
     it "is successful" do
       get :edit, id: blogpost.id
@@ -106,13 +88,18 @@ describe BlogpostsController do
       get :edit, id: blogpost.id
       expect(assigns(:blogpost).id).to eq(blogpost.id)
     end
+
+    it 'expects blog id to not be nil' do
+      get :edit, id: blogpost.id
+      expect(assigns(:blogpost).id).to_not be_nil
+    end
   end
 
-  describe 'POST #update' do
+  describe 'PATCH #update' do
     
     context "with valid attributes" do
       let(:blogpost) { create(:blogpost) }
-      let(:valid_attributes) { {title: "blogposttitle", post_text: "Etc, Etc, Etc", user_id: 1} }
+      let(:valid_attributes) { {title: "new title", post_text: blogpost.post_text, user_id: blogpost.user_id} }
 
       it "locates the requested blogpost" do
         patch :update, id: blogpost.id
@@ -120,49 +107,46 @@ describe BlogpostsController do
       end
 
       it "updates the blogpost's attributes" do
-        patch :update, id: blogpost.id
+        patch :update, id: blogpost.id, blogpost: valid_attributes
         blogpost.reload
-        expect(@blogpost.title).to eq("blogposttitle")
+        expect(blogpost.title).to eq("new title")
       end
 
       it "redirects user to blogpost's show page" do
-        patch :update, id: blogpost.id
+        patch :update, id: blogpost.id, blogpost: valid_attributes
         expect(response).to redirect_to blogpost
       end
     end
 
     context "with invalid attributes" do
       let(:blogpost) { create(:blogpost) }
-      let(:invalid_attributes) { {title: " ", post_text: "Etc, Etc, Etc", user_id: 1} }      
-
-      it "locates the requested blogpost" do
-        patch :update, id: blogpost.id
-        expect(assigns(:blogpost)).to eq(blogpost)
-      end
+      let(:invalid_attributes) { {title: nil, post_text: blogpost.post_text, user_id: blogpost.user_id} } 
 
       it "does NOT update the blogpost's attributes" do
-        patch :update, id: blogpost.id
+        old_title = blogpost.title
+        patch :update, id: blogpost.id, blogpost: invalid_attributes
         blogpost.reload
-        expect(blogpost.title).to eq("Blog What?")
+        expect(blogpost.title).to eq(old_title)
       end
 
-      it "re-renders the blogpost's show page" do
-        patch :update, id: blogpost.id
-        expect(response).to render_template :edit
+      it "re-renders the blogpost's edit page" do
+        patch :update, id: blogpost.id, blogpost: invalid_attributes
+        expect(response).to redirect_to edit_blogpost_path(blogpost)
       end
     end
   end
 
   describe 'DELETE #destroy' do
     let(:blogpost) { create(:blogpost) }
-    let(:valid_attributes) { {title: "blogposttitle", post_text: "Etc, Etc, Etc", user_id: 1} }
-
+    
     it 'deletes the blog post and changes count by -1' do
-      expect{ delete :destroy, id: blogpost.id }.to change(Blogpost, :count).by(-1)
+      blogpost.reload
+      expect { delete :destroy, id: blogpost.id }.to change(Blogpost, :count).by(-1)
+
     end
 
     it 'is a redirect' do
-      get :delete, blogpost: valid_attributes
+      delete :destroy, id: blogpost.id
       expect(response.status).to eq 302
     end
   end
