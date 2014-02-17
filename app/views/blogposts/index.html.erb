@@ -8,6 +8,7 @@
   <% @blogposts.reverse.each do |post| %>
     <p><%= link_to post.title, blogpost_path(post) %></p>
     <p> Post Number <%= post.id %> </p>
+    <p> Post Author <%= @blogpost.user.username.titleize %>
     <td><%= link_to 'Show', blogpost_path(post) %></td>
   <% end %>
 </div>
