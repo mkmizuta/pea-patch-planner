@@ -1,2 +1,13 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="ui piled segment">
+  <div class="ui circular segment">
+    <h2 class="ui header">
+      Here is <br> your
+      <div class="sub header">BLOG POST</div>
+    </h2>
+  </div>
+<p>Title: <%= @blogpost.title %>
+<p>Author: <%= @blogpost.user.username
+ %>
+<p>Text: <% @blogpost.post_text.html_safe %>
+
+</div> <!-- this is the last div of the page outline -->
