@@ -1,5 +1,5 @@
 <div class="ui fluid form segment">
-    <%= form_for(@blogpost) do |f| %>
+    <%= form_for @blogpost, :html => {:multipart => true} do |f| %>
       <% if @blogpost.errors.any? %>
         <div id="error_explanation">
         <%= pluralize(@blogpost.errors.count, "error") %> prohibited this post from being saved:

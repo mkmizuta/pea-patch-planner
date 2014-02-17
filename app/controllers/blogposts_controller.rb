@@ -30,7 +30,7 @@ class BlogpostsController < ApplicationController
     @blogpost = Blogpost.find(params[:id])
 
     if params.key?(:blogpost) && @blogpost.update(params[:blogpost].permit(
-                  :title, :text, :user_id, :pic_upload))
+                  :title, :post_text, :user_id, :pic_upload))
       redirect_to @blogpost
     else
       redirect_to edit_blogpost_path(@blogpost)

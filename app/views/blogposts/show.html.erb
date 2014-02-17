@@ -7,12 +7,13 @@
     </h2>
   </div>
 <div class="blogpost" >
-<p>Title: <%= @blogpost.title %>
-<p>Author: <%= @blogpost.user.username.titleize %>
-<p>Text: <%= raw @blogpost.post_text.html_safe %>
-<p><td><%= link_to('Edit', edit_blogpost_path(@blogpost)) %></td>
+<h2 class="ui center aligned green header">
+<%= @blogpost.title %> </h2>
+<h4 class="ui top attached header">Author: <%= @blogpost.user.username.titleize %></h4>
+<div class="ui segment attached">Text: <%= raw @blogpost.post_text.html_safe %></div>
+<h4 class="ui bottom attached header"><td><%= link_to('Edit', edit_blogpost_path(@blogpost)) %></td>
    <td><%= link_to('Destroy', blogpost_path(@blogpost),
-                  method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+                  method: :delete, data: { confirm: 'Are you sure?' }) %></td></div>
 </div>
 
 <div id="disqus_thread"></div>
