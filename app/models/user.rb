@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
-  
-
-  #FOLLOW UP w/TEAM
-  #has_secure_password 
+  has_secure_password :validations => false
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\w+@+\w+\.+\w+/ }, if: :not_twitter_user?
   #validates :uid, presence: true, uniqueness: true, format: { with: /\w+/}
@@ -20,8 +17,9 @@ class User < ActiveRecord::Base
   def self.authenticate(username,password)
     if user = find_by_username(username)
       if user.uid 
-        auth = { provider: user.provider, uid: user.uid }
-        User.from_omniauth(auth)
+        # auth = { provider: user.provider, uid: user.uid }
+        # User.from_omniauth(auth)
+        return nil
       else BCrypt::Password.new(user.password_digest).is_password? password
         return user
       end
