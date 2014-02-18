@@ -1,0 +1,36 @@
+<div class="ui piled segment">
+  <div class="ui circular segment">
+    <h2 class="ui header">
+      All The <br> Blogs
+      <div class="sub header">Are Below</div>
+    </h2>
+  </div>
+
+<div class="ui feed segment">
+  <% @blogposts.reverse.each do |post| %>
+  <div class="event">
+    <div class="label">
+      <h4> </h4>
+      <img src="http://bestclipartblog.com/clipart-pics/garden-clip-art-8.gif">
+    </div>
+    <div class="content">
+      <div class="date">
+        <h3> </h3>
+        <%= post.created_at.strftime("%a, %b %e, %y") %><br>
+        &nbsp;&nbsp;&nbsp;<%= post.created_at.strftime("%I:%M:%S %p") %>
+      </div>
+      <div class="summary">
+         <p><%= link_to post.title, blogpost_path(post) %> By: <%= post.user.username.titleize %></p>
+         <p> Post ID <%= post.id %> <%= link_to 'Show Post', blogpost_path(post) %> </p>
+      </div>
+    </div>
+  </div>
+   <% end %>
+</div>
+<!--   <% @blogposts.reverse.each do |post| %>
+    <p><%= link_to post.title, blogpost_path(post) %></p>
+    <p> Post ID <%= post.id %> </p>
+    <p> Post Author <%= post.user.username.titleize %>
+    <td><%= link_to 'Show', blogpost_path(post) %></td>
+  <% end %>
+</div> -->
