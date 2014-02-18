@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140218165756) do
     t.string  "email"
     t.boolean "admin"
     t.string  "password_digest"
+    t.string  "provider"
   end
 
   create_table "weathers", force: true do |t|

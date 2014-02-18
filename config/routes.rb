@@ -2,7 +2,8 @@ PeaPatchPlanner::Application.routes.draw do
 
  
   root "welcome#index"
-  resources :posts
+  resources :blogposts
+  # get "blogposts/show", to: "blogposts#show", as: :blogposts
   # resources :users, only: [:new, :create, :edit, :show]
 
   get "users/new", to: "users#new"
@@ -15,8 +16,16 @@ PeaPatchPlanner::Application.routes.draw do
   post '/signin',    to: 'sessions#create'
   # , as: :signin
   get '/signout', to: 'sessions#destroy', as: :signout 
+  get '/twitter/signout', to: 'twitter#signout'
   get 'signup', to: 'users#new'
   post '/welcome', to: 'weather#create'
 
-  # match "/auth/twitter/callback", to: "sessions#create", via: [:get, :post]
+  #match "/auth/twitter/callback", to: "sessions#create", via: [:get, :post]
+  match 'auth/twitter/callback', to: 'twitter#create', via: [:get, :post]
+
+
+  # get "/auth/twitter", to: "sessions#create"
+  # get "auth/twitter", to: "sessions#create"
 end
+
+# twitter_signin_path

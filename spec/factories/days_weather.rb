@@ -6,3 +6,4 @@ FactoryGirl.define do
     forecast_association 1
   end
 end
+
