@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20140218165756) do
+=======
 ActiveRecord::Schema.define(version: 20140218045207) do
+>>>>>>> 4a12b9b852b3537d6afa90f36a3d5a19c5bb8028
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +37,18 @@ ActiveRecord::Schema.define(version: 20140218045207) do
     t.integer "place_value"
   end
 
+<<<<<<< HEAD
+  create_table "tools", force: true do |t|
+    t.string  "name"
+    t.text    "description"
+    t.integer "owner"
+=======
   create_table "events", force: true do |t|
     t.string   "name"
     t.datetime "start_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+>>>>>>> 4a12b9b852b3537d6afa90f36a3d5a19c5bb8028
   end
 
   create_table "users", force: true do |t|
