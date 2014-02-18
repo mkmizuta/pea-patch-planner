@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213182444) do
+ActiveRecord::Schema.define(version: 20140218165756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 20140213182444) do
     t.float   "temp"
     t.string  "icon"
     t.integer "place_value"
+  end
+
+  create_table "tools", force: true do |t|
+    t.string  "name"
+    t.text    "description"
+    t.integer "owner"
   end
 
   create_table "users", force: true do |t|
