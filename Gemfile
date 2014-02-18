@@ -24,12 +24,14 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'guard-rspec', require: false
-  gem 'simplecov'
+  gem "terminal-notifier-guard"
 end
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'simplecov', :require => false
+
 end
 
 # Use HTTParty to access Weather API
@@ -51,8 +53,8 @@ gem 'omniauth-twitter'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-group :test do
-  gem "launchy", "~> 2.4.2"
-  gem "database_cleaner", "~> 1.2.0"
-  gem "capybara"
-end
+# group :test do
+#   gem "launchy", "~> 2.4.2"
+#   gem "database_cleaner", "~> 1.2.0"
+#   gem "capybara"
+# end
