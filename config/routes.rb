@@ -8,7 +8,8 @@ PeaPatchPlanner::Application.routes.draw do
 
   get "users/new", to: "users#new"
   post "users/create", to: "users#create"
-  get "users/show", to: "users#show", as: :user
+  # get "users/show", to: "users#show", as: :user
+  get "users/:id", to: "users#show", as: :user
   get "users/edit", to: "users#edit"
 
 
