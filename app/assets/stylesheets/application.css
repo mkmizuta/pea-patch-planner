@@ -52,3 +52,8 @@ h1{
   -moz-box-shadow: 10px 10px 5px #C0C0C0;
   box-shadow: 10px 10px 5px #C0C0C0;
 }
+
+/*.calendar td { 
+  height: 100px; 
+  width: 14.28%; 
+}*/
