@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:id] = @user.id
       flash[:notice] = "You're now a farmer!"
-      redirect_to action: :show
+      redirect_to @user
     else
       render action: :new
     end
