@@ -20,7 +20,7 @@
 <div class= "ui fluid form segment">
 
   <h1 class="ui green center aligned header ">Seattle Stone Soup</h1>
-<p class="ui center aligned inverted green  header">A neighborly interface to our local pea patch</p>
+<p class="ui center aligned inverted green header">A neighborly interface to our local pea patch</p>
 </div>
 <div class="welcome">
   <% if current_user %>
@@ -51,15 +51,21 @@
           <%= label_tag :password %><br />
           <%= password_field_tag :password %>
         </div>
-        <div class="ui blue submit button"><%= submit_tag "Log in" %></div>
-        <% end %>
+
+        <div class="centercolumnbutton">
+            <div class="center aligned column">  
+             <%= submit_tag 'Sign in', :class => 'huge blue ui labeled button' %>
+          </div>
+        </div>
+
+     <% end %>
       </div>
-    </div>
+    </div> -->
     <!-- Sign Up -->
 
     <div class="column">
       <div class="ui fluid form segment">
-        <h3 class="ui header">New? Sign in to See it all.</h3>
+        <h3 class="ui header">New? Sign in to See it all.
           <div class="centercolumnbutton">
             <div class="center aligned column">
               <%= link_to signup_path do %>
@@ -78,11 +84,13 @@
         <h3 class="ui header">Twitter User?</h3>
         <div class="centercolumnbutton">
           <div class="center aligned column">
+            <%= link_to "/auth/twitter" do %>
             <div class="ui blue button">
           <i class="twitter icon"></i>
           Sign In With <br> Twitter
-              <%#= link_to "signin", "/signin" %>
+
               </div>
+              <% end %>
             </div>
           </div>
         </div>
