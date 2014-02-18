@@ -2,6 +2,10 @@
 <!-- Sign Out and Profile Buttons that only show for signed in user -->
 <% if current_user %>
   <div class="ui buttons">
+    <%= link_to root_path do %>
+      <div class="ui teal button">Home Page</div>
+    <% end %>
+    <div class="or"></div>
     <%= link_to signout_path do %>
       <div class="ui button">Sign Out</div>
     <% end %>
