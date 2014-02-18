@@ -191,6 +191,8 @@ GEM
     semantic-ui-rails (0.12.4)
       autoprefixer-rails
       less-rails
+    simple_calendar (0.1.9)
+      rails (>= 3.0)
     simple_oauth (0.2.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
@@ -260,6 +262,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   semantic-ui-rails
+  simple_calendar (~> 0.1.9)
   simplecov
   terminal-notifier-guard
   therubyracer

@@ -46,6 +46,7 @@ gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem "simple_calendar", "~> 0.1.9"
 
 # Use unicorn as the app server
 # gem 'unicorn'

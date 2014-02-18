@@ -136,7 +136,20 @@
       </div>
     </div>
   </div>
-  
+
+  <% end %>
+
+<br>
+<br>
+<br>
+<br>
+<!-- calendar time -->
+<div class= "ui section divider">
+  <%= calendar @events do |event| %>
+  <div><%= link_to event.title, event %></div>
+  <% end %>
+</div>
+
 <!-- end of log in that is only seen by current user -->
 
   <!-- weather forecast -->
