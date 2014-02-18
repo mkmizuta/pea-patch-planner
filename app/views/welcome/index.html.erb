@@ -49,15 +49,9 @@
         </div>
 
         <div class="centercolumnbutton">
-            <div class="center aligned column">
-              <%= link_to signin_path do %>
-              <%=submit_tag%>
-              <div class="huge blue ui labeled button">
-            
-                 Log In
-              </div>
-              <% end %>
-            </div>
+            <div class="center aligned column">  
+             <%= submit_tag 'Sign in', :class => 'huge blue ui labeled button' %>
+          </div>
         </div>
 
      <% end %>
@@ -86,7 +80,7 @@
         <h3 class="ui header">Twitter User?</h3>
         <div class="centercolumnbutton">
           <div class="center aligned column">
-            <%= link_to "/auth/twitter/callback" do %>
+            <%= link_to "/auth/twitter" do %>
             <div class="ui blue button">
           <i class="twitter icon"></i>
           Sign In With <br> Twitter

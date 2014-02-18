@@ -1,12 +1,15 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  
+
+  #FOLLOW UP w/TEAM
+  #has_secure_password 
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true, format: { with: /\w+@+\w+\.+\w+/ }
+  validates :email, presence: true, uniqueness: true, format: { with: /\w+@+\w+\.+\w+/ }, if: :not_twitter_user?
   #validates :uid, presence: true, uniqueness: true, format: { with: /\w+/}
     #perhaps create a validation where EITHER a uid or password is required to handle the twitter and non-twitter cases respectively
-  validates :password, presence: true, length: { minimum: 6, too_short: "must be at least 6 characters" }
-  validates_confirmation_of :password
-  validates :password_confirmation, presence: true 
+  validates :password, presence: true, length: { minimum: 6, too_short: "must be at least 6 characters" }, if: :not_twitter_user?
+  validates_confirmation_of :password, if: :not_twitter_user?
+  validates :password_confirmation, presence: true, if: :not_twitter_user?
 
   before_save :hash_password
 
@@ -25,6 +28,14 @@ class User < ActiveRecord::Base
     end
 
     return nil
+  end
+
+  def not_twitter_user?
+    if self.uid
+      return false
+    else
+      return true
+    end
   end
 
   def self.from_omniauth(auth)
