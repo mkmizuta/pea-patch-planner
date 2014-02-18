@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password :validations => false
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\w+@+\w+\.+\w+/ }, if: :not_twitter_user?
   #validates :uid, presence: true, uniqueness: true, format: { with: /\w+/}
@@ -14,7 +15,7 @@ class User < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(@password)
   end
 
-  def self.authenticate(username,password)
+  def self.authenticate(username, password)
     if user = find_by_username(username)
       if user.uid 
         # auth = { provider: user.provider, uid: user.uid }
