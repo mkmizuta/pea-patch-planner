@@ -2,7 +2,7 @@ PeaPatchPlanner::Application.routes.draw do
 
  
   root "welcome#index"
-  resources :blogposts
+  resources :blogposts, :tools
   # get "blogposts/show", to: "blogposts#show", as: :blogposts
   # resources :users, only: [:new, :create, :edit, :show]
 
