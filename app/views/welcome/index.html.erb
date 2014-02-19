@@ -10,7 +10,7 @@
       <div class="ui button">Sign Out</div>
     <% end %>
     <div class="or"></div>
-    <%= link_to user_path do %>
+    <%= link_to user_path(current_user.id) do %>
       <div class="ui positive button">Profile</div>
     <% end %>
   </div>
