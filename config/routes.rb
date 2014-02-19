@@ -7,10 +7,7 @@ PeaPatchPlanner::Application.routes.draw do
   root "welcome#index"
   resources :blogposts, :tools
 
-  # get "blogposts/show", to: "blogposts#show", as: :blogposts
-  # resources :users, only: [:new, :create, :edit, :show]
-
-    get "users/new", to: "users#new"
+  get "users/new", to: "users#new"
   post "users/create", to: "users#create"
   get 'users/email', to: 'users#email', as: :user_email
   post 'users/save_email', to: 'users#create'
