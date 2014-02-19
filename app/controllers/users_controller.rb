@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:id] = @user.id
       flash[:notice] = "You're now a farmer!"
+      UserMailer.welcome(@user.id).deliver
       redirect_to @user
     else
       render action: :new
