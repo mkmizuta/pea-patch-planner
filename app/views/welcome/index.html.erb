@@ -31,10 +31,24 @@
   </div>
 
 <!-- Nav Buttons -->
-<div class="ui center aligned header">
-<i class="close huge icon link icon"></i>
-<i class="help circle huge icon link icon"></i>
-</div>
+<!-- <div class="ui center aligned header">
+  <% if current_user %>
+  <div class="ui four column grid">
+    <div class="column">
+      <%= link_to user_path(current_user.id) do %><i class="id basic huge icon link icon">
+        </i><% end %>
+    </div>
+    <div class="column">
+      <a class ="item">
+        <i class="wrench huge icon link icon"></i>
+      </a>
+    </div>
+    <div class="column">
+      <i class="browser huge icon link icon"></i>
+    </div>
+  </div>
+  <% end %>
+</div> -->
 
 
 <!-- sign in and sign up: to only be visable to non users -->
