@@ -11,20 +11,32 @@ class UsersController < ApplicationController
       flash[:notice] = "You're now a farmer!"
       UserMailer.welcome(@user.id).deliver
       redirect_to @user
+
+  def update
+    @user = User.find(current_user.id)
+    if @user.update(params.require(:user).permit(:email))
+      redirect_to :root # current_user
     else
-      render action: :new
+      render :email
     end
   end
 
   def show
-    user = User.find(params[:id])
+    @user = current_user
   end
 
   def edit
   end
 
+  def email
+    @user = User.find(current_user.id)
+  end
+
+  def save_email
+  end
+
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email)
   end
 end

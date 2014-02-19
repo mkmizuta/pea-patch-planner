@@ -5,15 +5,22 @@ PeaPatchPlanner::Application.routes.draw do
   mount Resque::Server, :at => "/resque"
 
   root "welcome#index"
-  resources :blogposts
- 
+  resources :blogposts, :tools
 
-  get  "users/new",    to: "users#new"
+  # get "blogposts/show", to: "blogposts#show", as: :blogposts
+  # resources :users, only: [:new, :create, :edit, :show]
+
+    get "users/new", to: "users#new"
   post "users/create", to: "users#create"
-  # get "users/show",  to: "users#show", as: :user
-  get  "users/:id",    to: "users#show", as: :user
-  get  "users/edit",   to: "users#edit"
-
+  get 'users/email', to: 'users#email', as: :user_email
+  post 'users/save_email', to: 'users#create'
+  patch 'users/', to: 'users#update'
+  get "users/edit", to: "users#edit"
+  # get "users/show", to: "users#show", as: :user
+  get "users/", to: "users#show", as: :user
+  
+# remove users create controller specs 
+# go through each spec to see if valid or if not using
 
   get  '/signin',      to: 'sessions#new',  as: :signin
   post '/signin',      to: 'sessions#create'

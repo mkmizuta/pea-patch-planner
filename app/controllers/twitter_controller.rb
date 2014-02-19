@@ -9,7 +9,8 @@ class TwitterController < ApplicationController
   def create
     current_user = User.from_omniauth(env['omniauth.auth'])
     session[:id] = current_user.id
-    redirect_to root_url, notice: "Signed in."
+
+    redirect_to :root # current_user
   end
 
   def signin

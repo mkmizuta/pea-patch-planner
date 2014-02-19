@@ -17,71 +17,28 @@
 <% end %>
 
 <!-- header with title and green background -->
-<div class= "ui fluid form segment">
+  <div class= "ui fluid form segment">
+    <h1 class="ui green center aligned header ">Seattle Stone Soup</h1>
+    <p class="ui center aligned inverted green header">A neighborly interface to our local pea patch</p>
+  </div>
+<!--   Welcome with User Name -->
+  <div class="welcome">
+    <% if current_user %>
+      <h4> Welcome  <%= current_user.username.titleize %> </h4>
+    <% end %>
+  </div>
 
-  <h1 class="ui green center aligned header ">Seattle Stone Soup</h1>
-<p class="ui center aligned inverted green header">A neighborly interface to our local pea patch</p>
-</div>
-<div class="welcome">
-  <% if current_user %>
-    <h4> Welcome  <%= current_user.username.titleize %> </h4>
-  <% end %>
-</div>
-
-<div>
-<%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
-  <% f.submit %>
-  <% end %>
-</div>
 
 
 <!-- sign in and sign up: to only be visable to non users -->
-<!-- Log In only seen by current user-->
-<% if current_user.nil? %>
-  <div class="three column stackable ui grid">
-    <div class="column">
-      <div class="ui fluid form segment">
-        <h3 class="ui header">Log-in</h3>
-        <%= form_tag url_for(:controller=>"sessions",:action=>"create") do %>
-        <div class="field">
-          <%= label_tag :username %><br />
-          <%= text_field_tag :username, params[:username] %>
-        </div>
-        <div class="field">
-          <%= label_tag :password %><br />
-          <%= password_field_tag :password %>
-        </div>
 
-        <div class="centercolumnbutton">
-            <div class="center aligned column">  
-             <%= submit_tag 'Sign in', :class => 'huge blue ui labeled button' %>
-          </div>
-        </div>
-
-     <% end %>
-      </div>
-    </div> -->
-    <!-- Sign Up -->
-
-    <div class="column">
-      <div class="ui fluid form segment">
-        <h3 class="ui header">New? Sign in to See it all.
-          <div class="centercolumnbutton">
-            <div class="center aligned column">
-              <%= link_to signup_path do %>
-              <div class="huge green ui labeled icon button">
-                <i class="signup icon"></i>
-                 Sign Up
-              </div>
-              <% end %>
-            </div>
-        </div>
-      </div>
-    </div>
     <!-- Sign Up with Twitter -->
-    <div class="column">
-      <div class="ui fluid form segment">
-        <h3 class="ui header">Twitter User?</h3>
+    <% if current_user.nil? %>
+    <div class="ui horizontal icon divider">
+      <i class="circular twitter icon"></i>
+    </div>
+      <div class="ui center aligned segment">
+        <h3 class="ui header">Please Sign in with Twitter</h3>
         <div class="centercolumnbutton">
           <div class="center aligned column">
             <%= link_to "/auth/twitter" do %>
@@ -94,48 +51,56 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
-<% end %>
+    <% end %>
 
 <!-- Weather Chunk -->
+<% if current_user %> <!-- Start of current User view: wrapped around weather, pinterest, and calendar -->
+<!--  Weather Divider -->
     <div class="ui horizontal icon divider">
       <i class="circular sun icon"></i>
     </div>
-      
 
+<!-- Weather Button -->
+  <div>
+    <%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
+    <% f.submit %>
+    <% end %>
+  </div>
+ 
+<!--   Weather Forcast -->
       <div class="ui vertically divided grid">
         <div class="four column row">
           <div class="column">
             <div class="ui fluid form segment">
-              <h3 class="ui header">Today</h3><!-- 
-              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
-              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %> -->
+              <h3 class="ui header">Today</h3>
+              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
+              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
-              <h3 class="ui header">Tomorrow</h3><!-- 
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %> -->
+              <h3 class="ui header">Tomorrow</h3>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
-              <h3 class="ui header">Next</h3><!-- 
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
- -->            </div>
+              <h3 class="ui header">Next</h3>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
+            </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
-              <h3 class="ui header">Then</h3><!-- 
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
- -->            </div>
+              <h3 class="ui header">Then</h3>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
+            </div>
           </div>
         </div>
       </div>
@@ -143,28 +108,34 @@
   </div>
 
 <!-- calendar time -->
-<div class="ui horizontal icon divider">
-  <i class="circular calendar icon"></i>
-</div>
-<div class="ui fluid form segment">
-  <%= calendar @events do |event| %>
-  <div><%= link_to event.title, event %></div>
-  <% end %>
-</div>
+  <!--  Calendar Divider -->
+  <div class="ui horizontal icon divider">
+    <i class="circular calendar icon"></i>
+  </div>
+  <div class="ui fluid form segment">
+    <%= calendar @events do |event| %>
+    <div><%= link_to event.title, event %></div>
+    <% end %>
+  </div>
 
 
 <!-- Pinterest Chunk -->
-<div class="ui horizontal icon divider">
-  <i class="circular pin icon"></i>
-</div>
-<div>
-<h4>Follow our community Pin Board</h4>
-<div class="ui center align fluid form segment">
-<a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
-<!-- Please call pinit.js only once per page -->
-<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
-</div>
-</div>
+  <!-- Pin Divider -->
+
+  <div class="ui horizontal icon divider">
+    <i class="circular pin icon"></i>
+  </div>
+    <div>
+      <h4>Follow our community Pin Board</h4>
+    <div class="ui center align fluid form segment">
+    <a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
+    <!-- Please call pinit.js only once per page -->
+    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+    </div>
+  </div>
+
+
+<% end %> <!-- end of current user wrapper -->
 
 
 
@@ -175,5 +146,4 @@
   upcoming events
   reserve a tool
   profile page if signed in -->
-
 
