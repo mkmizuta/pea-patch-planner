@@ -27,13 +27,6 @@
       <h4> Welcome  <%= current_user.username.titleize %> </h4>
     <% end %>
   </div>
-<!-- Weather Button -->
-  <div>
-    <%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
-    <% f.submit %>
-    <% end %>
-  </div>
-
 
 <!-- sign in and sign up: to only be visable to non users -->
 
@@ -42,10 +35,10 @@
     <div class="ui horizontal icon divider">
       <i class="circular twitter icon"></i>
     </div>
-    <div class="column">
-      <div class="ui fluid form segment">
-        <h3 class="ui header">Twitter User?</h3>
-        <div class="centercolumnbutton">
+
+      <div class="ui center aligned segment">
+        <h3 class="ui header">Please Sign in with Twitter</h3>
+          <div class="centercolumnbutton">
           <div class="center aligned column">
             <%= link_to "/auth/twitter" do %>
             <div class="ui blue button">
@@ -57,16 +50,27 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
     <% end %>
 
 <!-- Weather Chunk -->
+
+<% if current_user %> <!-- Start of current User view: wrapped around weather, pinterest, and calendar -->
+
  <!--  Weather Divider -->
+
     <div class="ui horizontal icon divider">
       <i class="circular sun icon"></i>
     </div>
 
+
+<!-- Weather Button -->
+  <div>
+    <%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
+    <% f.submit %>
+    <% end %>
+  </div>
+ 
 <!--   Weather Forcast -->
       <div class="ui vertically divided grid">
         <div class="four column row">
@@ -120,17 +124,22 @@
 
 <!-- Pinterest Chunk -->
   <!-- Pin Divider -->
-<div class="ui horizontal icon divider">
-  <i class="circular pin icon"></i>
-</div>
-<div>
-<h4>Follow our community Pin Board</h4>
-<div class="ui center align fluid form segment">
-<a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
-<!-- Please call pinit.js only once per page -->
-<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
-</div>
-</div>
+
+  <div class="ui horizontal icon divider">
+    <i class="circular pin icon"></i>
+  </div>
+    <div>
+      <h4>Follow our community Pin Board</h4>
+    <div class="ui center align fluid form segment">
+    <a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
+    <!-- Please call pinit.js only once per page -->
+    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+    </div>
+  </div>
+
+
+<% end %> <!-- end of current user wrapper -->
+
 
 
 
@@ -141,5 +150,4 @@
   upcoming events
   reserve a tool
   profile page if signed in -->
-
 
