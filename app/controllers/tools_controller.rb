@@ -35,6 +35,12 @@ class ToolsController < ApplicationController
     end
   end
 
+  def destroy
+    Tool.find(params[:id]).destroy!
+
+    redirect_to tools_path
+  end
+
   private
 
   def tool_params

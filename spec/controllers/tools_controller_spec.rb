@@ -147,8 +147,17 @@ describe ToolsController do
   end
 
   describe "DELETE destroy" do
-    it "correctly locates and assigns @tool"
-    it "removes @tool from the database"
-    it "redirects user to the tool index page"
+
+    it "removes @tool from the database" do
+      tool.reload
+
+      expect { delete :destroy, id: tool.id }.to change(Tool, :count).by(-1)
+    end
+
+    it "redirects user to the tool index page" do
+      delete :destroy, id: tool.id
+
+      expect(response.status).to eq(302)
+    end
   end
 end
