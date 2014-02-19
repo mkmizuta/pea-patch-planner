@@ -28,8 +28,6 @@
     <% end %>
   </div>
 
-
-
 <!-- sign in and sign up: to only be visable to non users -->
 
     <!-- Sign Up with Twitter -->
@@ -39,7 +37,7 @@
     </div>
       <div class="ui center aligned segment">
         <h3 class="ui header">Please Sign in with Twitter</h3>
-        <div class="centercolumnbutton">
+          <div class="centercolumnbutton">
           <div class="center aligned column">
             <%= link_to "/auth/twitter" do %>
             <div class="ui blue button">
@@ -55,11 +53,16 @@
     <% end %>
 
 <!-- Weather Chunk -->
+
 <% if current_user %> <!-- Start of current User view: wrapped around weather, pinterest, and calendar -->
-<!--  Weather Divider -->
+
+ <!--  Weather Divider -->
+
+
     <div class="ui horizontal icon divider">
       <i class="circular sun icon"></i>
     </div>
+
 
 <!-- Weather Button -->
   <div>
@@ -146,5 +149,4 @@
   upcoming events
   reserve a tool
   profile page if signed in -->
-
 
