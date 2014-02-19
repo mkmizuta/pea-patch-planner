@@ -24,6 +24,7 @@ describe ToolsController do
 
       it "directs user to the tool show page" do
         post :create, tool: valid_attributes
+
         expect(response.status).to eq 302
       end
 
@@ -78,20 +79,70 @@ describe ToolsController do
   end
 
   describe "GET edit" do
-    it "correctly accesses and assignes @tool"
-    it "directs user to the @tool edit page"
+
+    it "correctly accesses and assignes @tool" do
+      get :edit, id: tool.id
+
+      expect(assigns(:tool)).to eq(tool)
+    end
+
+    it "directs user to the @tool edit page" do
+      get :edit, id: tool.id
+
+      expect(response).to render_template :edit
+    end
   end
 
   describe "PATCH update" do
-    it "correctly accesses and assigns @tool"
-    context "with valid attributes" do
-      it "saves the updated version of @tool to the database"
-      it "redirects to the @tool's show page"
+
+    it "correctly accesses and assigns @tool" do
+      patch :update, id: tool.id, tool: valid_attributes
+      tool.reload
+
+      expect(assigns(:tool)).to eq(tool)
     end
+
+    context "with valid attributes" do
+
+      it "saves the updated version of @tool to the database" do
+        original_name = tool.name
+        patch :update, id: tool.id, tool: valid_attributes
+        tool.reload
+
+        expect(tool[:name]).to_not eq(original_name)
+      end
+
+      it "redirects to the @tool's show page" do
+        patch :update, id: tool.id, tool: valid_attributes
+        tool.reload
+
+        expect(response.status).to eq 302
+      end
+    end
+
     context "with invalid attributes" do
-      it "does not update version of @tool in the database"
-      it "displays a notice to the user"
-      it "displays the tool's edit page"
+
+      it "does not update version of @tool in the database" do
+        original_name = tool.name
+        patch :update, id: tool.id, tool: invalid_attributes
+        tool.reload
+
+        expect(tool[:name]).to eq(original_name)
+      end
+
+      it "displays a notice to the user" do
+        patch :update, id: tool.id, tool: invalid_attributes
+        tool.reload
+
+        expect(flash[:notice]).to_not be_blank
+      end
+
+      it "displays the tool's edit page" do
+        patch :update, id: tool.id, tool: invalid_attributes
+        tool.reload
+
+        expect(response).to render_template :edit
+      end
     end
   end
 

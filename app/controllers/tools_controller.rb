@@ -21,6 +21,20 @@ class ToolsController < ApplicationController
     @tools = Tool.all
   end
 
+  def edit
+    @tool = Tool.find(params[:id])
+  end
+
+  def update
+    @tool = Tool.find(params[:id])
+    if @tool.update(tool_params)
+      redirect_to @tool
+    else
+      flash[:notice] = "There was a problem updating your tool"
+      render :edit
+    end
+  end
+
   private
 
   def tool_params
