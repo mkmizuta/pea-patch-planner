@@ -27,10 +27,11 @@ describe User do
       expect(user.errors[:email]).to_not be_empty
     end
 
+
+    # hmm... Am I writing the test wrong? Works in app (can't save invalid email and get error message, but spec fails.)   
     it "email is unique" do
       user2 = build(:user, email: user.email)
       user2.valid?
-
       expect(user2.errors[:email]).to_not be_empty
     end
 
@@ -58,13 +59,7 @@ describe User do
 
       expect(user.errors[:uid]).to be_empty
     end
-
-  describe "#password_digest" do
-    it "exists after create" do
-      expect(user.password_digest).to_not be_nil
-    end
   end
-end
 end
 
 

@@ -1,36 +1,23 @@
 class UsersController < ApplicationController
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(params.require(:user).permit(:username, :email, :password, :password_confirmation))
-    if @user.save
-      session[:id] = @user.id
-      flash[:notice] = "You're now a farmer!"
-      redirect_to @user
-    else
-      render action: :new
-    end
-  end
-
   def update
-    if current_user.update params.require(:user).permit(:email)
-      redirect_to user_path
+    @user = User.find(current_user.id)
+    if @user.update(params.require(:user).permit(:email))
+      redirect_to :root # current_user
     else
-      render_template :email
+      render :email
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def edit
   end
 
   def email
+    @user = User.find(current_user.id)
   end
 
   def save_email
@@ -38,6 +25,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email)
   end
 end
