@@ -10,7 +10,7 @@
       <div class="ui button">Sign Out</div>
     <% end %>
     <div class="or"></div>
-    <%= link_to user_path do %>
+    <%= link_to user_path(current_user.id) do %>
       <div class="ui positive button">Profile</div>
     <% end %>
   </div>
@@ -97,7 +97,10 @@
       </div>
     </div>
 <% end %>
-    <div class= "ui section divider">
+    <div class="ui horizontal icon divider">
+      <i class="circular sun icon"></i>
+    </div>
+      
 
       <div class="ui vertically divided grid">
         <div class="four column row">
@@ -137,16 +140,28 @@
     </div>
   </div>
 
-<br>
-<br>
-<br>
-<br>
 <!-- calendar time -->
-<div class= "ui section divider">
+<div class="ui horizontal icon divider">
+  <i class="circular calendar icon"></i>
+</div>
+<div class="ui fluid form segment">
   <%= calendar @events do |event| %>
   <div><%= link_to event.title, event %></div>
   <% end %>
 </div>
+
+<div class="ui horizontal icon divider">
+  <i class="circular pin icon"></i>
+</div>
+<div>
+<h4>Follow our community Pin Board</h4>
+<div class="ui center align fluid form segment">
+<a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
+<!-- Please call pinit.js only once per page -->
+<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+</div>
+</div>
+
 
 
 <!-- end of log in that is only seen by current user -->
