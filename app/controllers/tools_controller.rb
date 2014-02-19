@@ -14,7 +14,7 @@ class ToolsController < ApplicationController
   end
 
   def show
-    
+    @tool = Tool.find(params[:id])
   end
 
   private
