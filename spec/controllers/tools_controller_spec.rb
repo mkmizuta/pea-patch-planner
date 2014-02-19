@@ -56,18 +56,24 @@ describe ToolsController do
 
     it "directs user to the @tool's show page" do
       get :show, id: tool.id
-      
+
       expect(response).to render_template :show
     end
   
   end
 
   describe "GET index" do
+
     it "correctly accesses and assigns @tools" do
-      
+      get :index
+
+      expect(assigns(:tools)).to eq([tool])
     end
+
     it "directs user to the @tools' index page" do
-      
+      get :index
+
+      expect(response).to render_template :index
     end
   end
 

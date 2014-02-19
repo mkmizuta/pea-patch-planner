@@ -17,6 +17,10 @@ class ToolsController < ApplicationController
     @tool = Tool.find(params[:id])
   end
 
+  def index
+    @tools = Tool.all
+  end
+
   private
 
   def tool_params
