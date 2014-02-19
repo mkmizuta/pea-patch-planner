@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140218165756) do
     t.string  "uid"
     t.string  "email"
     t.boolean "admin"
-    t.string  "password_digest"
     t.string  "provider"
   end
 
