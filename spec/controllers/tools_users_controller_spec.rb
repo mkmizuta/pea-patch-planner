@@ -1,16 +1,29 @@
 require 'spec_helper'
 
 describe ToolsUsersController do
+  let(:tools_users) {create(:tools_users)}
+
   describe "POST create" do
+    let(:valid_attributes) {{tool_id: 1, user_id: 1, checkout: Time.now}}
+    let(:invalid_attributes) {{tool_id: 1, user_id: nil, checkout: Time.now}}
+
     context "with valid attributes" do
-      it "saves to the database" 
-      it "directs user to their profile page"
+      it "saves to the database" do
+        expect {post :create, tools_users: valid_attributes}.to change(ToolsUsers, :count).by(1)
+      end
+
+      it "directs user to their profile page" do
+        post :create, tools_users: valid_attributes
+        expect(response.status).to eq 302
+      end
     end
 
     context "with invalid attributes" do
-      it "requires user to be logged in"
-      it "assigns an error message"
-      it "redirects user to the sign_in page"
+
+      xit "assigns an error message" do
+        post :create, tools_users: invalid_attributes
+        expect(flash[:notice]).to_not be_blank
+      end
     end
   end
 

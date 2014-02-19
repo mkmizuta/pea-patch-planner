@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :tools_users
-  has_many :tools, through: :tools
+  has_many :tools, through: :tools_users
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, on: :update

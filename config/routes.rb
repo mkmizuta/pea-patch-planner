@@ -33,5 +33,7 @@ PeaPatchPlanner::Application.routes.draw do
 
   # get "/auth/twitter", to: "sessions#create"
   # get "auth/twitter", to: "sessions#create"
+
+  post "/tool_checkout", to: 'tools_users#create'
 end
 
