@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(params.require(:user).permit(:email))
+      
+      UserMailer.welcome(@user.id).deliver
       redirect_to :root # current_user
     else
       render :email
@@ -27,4 +29,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email)
   end
+
 end
