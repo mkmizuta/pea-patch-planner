@@ -8,3 +8,4 @@ class Twitter < ActiveRecord::Base
       config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
     end
   end
+end
