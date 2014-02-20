@@ -18,6 +18,21 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def index
+    @users = User.all
+
+  end
+
+  def update_user
+    @user = User.find(params[:user][:id])
+    
+    if @user && @user.update(params[:user].permit(:admin))
+      redirect_to :root
+    else
+      redirect_to users_index_path
+    end
+  end
+
   def email
     @user = User.find(current_user.id)
   end
@@ -27,7 +42,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email)
+    params.require(:user).permit(:username, :email, :admin)
   end
 
 end
