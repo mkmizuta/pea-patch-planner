@@ -9,7 +9,7 @@ require "sprockets/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+Bundler.require(:default, :assets, Rails.env)
 
 
 
@@ -23,7 +23,7 @@ module PeaPatchPlanner
     config.generators do |g|
         g.factory_girl true
     end
-    
+
     config.generators do |g|
     g.test_framework :rspec,
         fixtures: true,

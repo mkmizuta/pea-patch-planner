@@ -15,8 +15,7 @@ gem 'resque'
 #semantic ui
  # or any other runtime
 
-gem 'autoprefixer-rails'
-gem 'semantic-ui-rails'
+
 
 group :doc do
   gem 'sdoc', require: false
@@ -33,7 +32,14 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'simplecov', '~> 0.7.1'
+
+end
+
+group :assets do
   gem 'therubyracer', platforms: :ruby
+  gem 'less-rails'
+  gem 'autoprefixer-rails'
+  gem 'semantic-ui-rails'
 end
 
 # Use HTTParty to access Weather API
