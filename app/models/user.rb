@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, on: :update
-  validates :email, uniqueness: true, on: :update
+  validates :email, uniqueness: true
   validates :email, format: { with: /\w+@+\w+\.+\w+/ }, on: :update
   validates :uid, presence: true, uniqueness: true #, format: { with: /\w+/}
 

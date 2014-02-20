@@ -73,32 +73,32 @@
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Today</h3>
-              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
-              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Tomorrow</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Next</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Then</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
             </div>
           </div>
         </div>
@@ -112,10 +112,26 @@
     <i class="circular calendar icon"></i>
   </div>
   <div class="ui fluid form segment">
+
     <%= calendar @events do |event| %>
-    <div><%= link_to event.title, event %></div>
+    <div><%= link_to event.name, event %></div>
     <% end %>
+
+    <%# @events.each do |event| %>
+  <%#= event.name %>
+<%# end %>
+
+<h3>Upcoming events:</h3>
+<% @events.each do |event| %>
+<%= event.start_time.strftime("%m/%d/%Y")  %>
+<%= link_to event.name, event %><br>
+<% end %>
+
+<h3>Create an Event</h3>
+<%= link_to 'Create a new event!', 'events/new' %>
   </div>
+
+
 
 
 <!-- Pinterest Chunk -->
