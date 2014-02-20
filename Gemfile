@@ -49,7 +49,7 @@ gem "httparty"
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'figaro'
-gem 'twitter'
+gem 'twitter','~> 5.7.1' 
 
 gem 'omniauth'
 gem 'omniauth-twitter'
