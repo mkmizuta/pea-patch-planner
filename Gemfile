@@ -48,7 +48,7 @@ group :development do
 end
 
 group :assets do
-  gem 'therubyracer', platforms: :ruby
+  gem 'therubyracer'#, platforms: :ruby
   gem 'less-rails'
   gem 'autoprefixer-rails'
   gem 'semantic-ui-rails'
