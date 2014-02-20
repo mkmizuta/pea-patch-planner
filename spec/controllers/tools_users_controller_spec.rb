@@ -6,6 +6,7 @@ describe ToolsUsersController do
   describe "POST create" do
     let(:valid_attributes) {{tool_id: 1, user_id: 1, checkout: Time.now}}
     let(:invalid_attributes) {{tool_id: 1, user_id: nil, checkout: Time.now}}
+    let(:valid_checkin) {{checkin: Time.now}}
 
     context "with valid attributes" do
       it "saves to the database" do
@@ -28,18 +29,47 @@ describe ToolsUsersController do
   end
 
   describe "GET current_checkouts" do
-    it "correctly assigns active checkouts to @tools_users"
-    it "renders the current_checkouts page"
+    it "correctly assigns active checkouts to @tools_users" do
+      get :current_checkouts
+
+      expect(assigns(:tools_users)).to eq([tools_users])
+    end
+
+    it "renders the current_checkouts page" do
+      get :current_checkouts
+
+      expect(response).to render_template :current_checkouts
+    end
   end
 
   describe "GET logs" do
-    it "correctly assigns all the checkouts to @tools_users"
-    it "renders the logs page"
+    it "correctly assigns all the checkouts to @tools_users" do
+      get :logs
+
+      expect(assigns(:tools_users)).to eq([tools_users])
+    end
+
+    it "renders the logs page" do
+      get :logs
+
+      expect(response).to render_template :logs
+    end
   end
 
   describe "PATCH update" do
-      it "correctly locates and assigns the checkout to @tools_users"
-      it "updates the checkout in the database"
-      it "directs user to their profile page"
+    it "correctly locates and assigns the checkout to @tools_users" do
+      patch :update, id: tools_users.id, tools_users: valid_checkin
+      tools_users.reload
+
+      expect(tools_users[:checkin]).to_not be_blank
+    end
+
+    it "updates the checkout in the database" do
+      
+    end
+
+    it "directs user to their profile page" do
+      
+    end
   end
 end
