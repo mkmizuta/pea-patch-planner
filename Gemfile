@@ -10,7 +10,19 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'resque'
+# Use HTTParty to access Weather API
+gem "httparty"
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.2'
+
+gem 'figaro'
+gem 'twitter','~> 5.7.1' 
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+
+gem "simple_calendar", "~> 0.1.9"
 
 #semantic ui
  # or any other runtime
@@ -42,19 +54,7 @@ group :assets do
   gem 'semantic-ui-rails'
 end
 
-# Use HTTParty to access Weather API
-gem "httparty"
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
-
-gem 'figaro'
-gem 'twitter','~> 5.7.1' 
-
-gem 'omniauth'
-gem 'omniauth-twitter'
-
-gem "simple_calendar", "~> 0.1.9"
 
 # Use unicorn as the app server
 # gem 'unicorn'
