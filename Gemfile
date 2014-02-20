@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'resque'
+gem 'closure-compiler'
 
 #semantic ui
 gem 'therubyracer', platforms: :ruby # or any other runtime
