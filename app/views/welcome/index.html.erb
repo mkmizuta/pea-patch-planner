@@ -82,14 +82,6 @@
     <div class="ui horizontal icon divider">
       <i class="circular sun icon"></i>
     </div>
-
-
-<!-- Weather Button -->
-  <div>
-    <%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
-    <% f.submit %>
-    <% end %>
-  </div>
  
 <!--   Weather Forcast -->
       <div class="ui vertically divided grid">
@@ -97,32 +89,32 @@
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Today</h3>
-              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
-              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Tomorrow</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Next</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Then</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
             </div>
           </div>
         </div>
