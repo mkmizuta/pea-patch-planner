@@ -10,10 +10,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'resque'
-gem 'closure-compiler'
+
 
 #semantic ui
-gem 'therubyracer', platforms: :ruby # or any other runtime
+ # or any other runtime
 gem 'less-rails'
 gem 'autoprefixer-rails'
 gem 'semantic-ui-rails'
@@ -33,6 +33,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'simplecov', '~> 0.7.1'
+  gem 'therubyracer', platforms: :ruby
 
 end
 
