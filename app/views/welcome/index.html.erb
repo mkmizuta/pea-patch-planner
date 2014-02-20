@@ -10,14 +10,6 @@
       <%= link_to signout_path do %>
         <div class="ui button">Sign Out</div>
       <% end %>
-      <!-- <div class="or"></div>
-      <%= link_to user_path(current_user.id) do %>
-        <div class="ui positive button">Profile</div>
-      <% end %>
-      <div class="or"></div>
-      <%= link_to user_path(current_user.id) do %>
-        <div class="ui purple button">Tools</div>
-      <% end %> -->
     </div>
   <% end %>
 </div>
@@ -36,15 +28,18 @@
 
 <!-- Nav Buttons -->
 <% if current_user %>
+
   <div class="ui horizontal icon divider">
     <i class="circular dashboard icon"></i>
   </div>
-  <div class="ui fluid three item menu form segment">
-    <a class="item"><i class="users icon"></i>Profile</a>
-    <a class="item"><i class="wrench icon"></i>Tools</a>
-    <a class="item"><i class="file outline icon"></i>Blogs</a>
-  </div>
- <% end %>
+
+<div class="ui fluid three item menu">
+  <a class="item" href="/users"><i class="ui users icon"></i>Profile</a>
+  <a class="item" href="/tools"><i class="ui wrench icon"></i>Tools</a>
+  <a class="item" href="/blogposts"><i class="file outline icon"></i>Blogs</a>
+</div>
+
+<% end %>
 
 
 
