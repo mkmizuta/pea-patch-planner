@@ -22,7 +22,15 @@
     background-size: cover;         
 }*/
  
- 
+ h1, 
+ h2,
+ h3,
+ h4,
+ p,
+.button,
+.or {
+  font-family: Avantgarde, Tahoma, Verdana, sans-serif;
+ }
 
 .centercolumnbutton {
   padding-top: 60px;
@@ -38,6 +46,14 @@ h1{
 }
 
 .ui.fluid.segment {
+  border-style: solid;
+  border-width: 2px;
+  -webkit-box-shadow: 10px 10px 5px #C0C0C0 blur;
+  -moz-box-shadow: 10px 10px 5px #C0C0C0;
+  box-shadow: 10px 10px 5px #C0C0C0;
+}
+
+.ui.center.aligned.segment {
   border-style: solid;
   border-width: 2px;
   -webkit-box-shadow: 10px 10px 5px #C0C0C0 blur;

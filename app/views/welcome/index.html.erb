@@ -1,20 +1,26 @@
 
 <!-- Sign Out and Profile Buttons that only show for signed in user -->
-<% if current_user %>
-  <div class="ui buttons">
-    <%= link_to root_path do %>
-      <div class="ui teal button">Home Page</div>
-    <% end %>
-    <div class="or"></div>
-    <%= link_to signout_path do %>
-      <div class="ui button">Sign Out</div>
-    <% end %>
-    <div class="or"></div>
-    <%= link_to user_path(current_user.id) do %>
-      <div class="ui positive button">Profile</div>
-    <% end %>
-  </div>
-<% end %>
+<div class="ui center aligned header">
+  <% if current_user %>
+    <div class="ui buttons">
+      <%= link_to root_path do %>
+        <div class="ui teal button">Home Page</div>
+      <% end %>
+      <div class="or"></div>
+      <%= link_to signout_path do %>
+        <div class="ui button">Sign Out</div>
+      <% end %>
+      <!-- <div class="or"></div>
+      <%= link_to user_path(current_user.id) do %>
+        <div class="ui positive button">Profile</div>
+      <% end %>
+      <div class="or"></div>
+      <%= link_to user_path(current_user.id) do %>
+        <div class="ui purple button">Tools</div>
+      <% end %> -->
+    </div>
+  <% end %>
+</div>
 
 <!-- header with title and green background -->
   <div class= "ui fluid form segment">
@@ -24,15 +30,22 @@
 <!--   Welcome with User Name -->
   <div class="welcome">
     <% if current_user %>
-      <h4> Welcome  <%= current_user.username.titleize %> </h4>
+      <h4> Welcome  <%= current_user.username.titleize %>!</h4>
     <% end %>
   </div>
-<!-- Weather Button -->
-  <div>
-    <%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
-    <% f.submit %>
-    <% end %>
+
+<!-- Nav Buttons -->
+<% if current_user %>
+  <div class="ui horizontal icon divider">
+    <i class="circular dashboard icon"></i>
   </div>
+  <div class="ui fluid three item menu form segment">
+    <a class="item"><i class="users icon"></i>Profile</a>
+    <a class="item"><i class="wrench icon"></i>Tools</a>
+    <a class="item"><i class="file outline icon"></i>Blogs</a>
+  </div>
+ <% end %>
+
 
 
 <!-- sign in and sign up: to only be visable to non users -->
@@ -42,10 +55,9 @@
     <div class="ui horizontal icon divider">
       <i class="circular twitter icon"></i>
     </div>
-    <div class="column">
-      <div class="ui fluid form segment">
-        <h3 class="ui header">Twitter User?</h3>
-        <div class="centercolumnbutton">
+      <div class="ui center aligned segment">
+        <h3 class="ui header">Please Sign in with Twitter</h3>
+          <div class="centercolumnbutton">
           <div class="center aligned column">
             <%= link_to "/auth/twitter" do %>
             <div class="ui blue button">
@@ -57,16 +69,20 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
     <% end %>
 
 <!-- Weather Chunk -->
+
+<% if current_user %> <!-- Start of current User view: wrapped around weather, pinterest, and calendar -->
+
  <!--  Weather Divider -->
+
+
     <div class="ui horizontal icon divider">
       <i class="circular sun icon"></i>
     </div>
-
+ 
 <!--   Weather Forcast -->
       <div class="ui vertically divided grid">
         <div class="four column row">
@@ -136,17 +152,21 @@
 
 <!-- Pinterest Chunk -->
   <!-- Pin Divider -->
-<div class="ui horizontal icon divider">
-  <i class="circular pin icon"></i>
-</div>
-<div>
-<h4>Follow our community Pin Board</h4>
-<div class="ui center align fluid form segment">
-<a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
-<!-- Please call pinit.js only once per page -->
-<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
-</div>
-</div>
+
+  <div class="ui horizontal icon divider">
+    <i class="circular pin icon"></i>
+  </div>
+    <div>
+      <h4>Follow our community Pin Board</h4>
+    <div class="ui center align fluid form segment">
+    <a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
+    <!-- Please call pinit.js only once per page -->
+    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+    </div>
+  </div>
+
+
+<% end %> <!-- end of current user wrapper -->
 
 
 
@@ -157,5 +177,4 @@
   upcoming events
   reserve a tool
   profile page if signed in -->
-
 
