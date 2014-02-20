@@ -1,20 +1,26 @@
 
 <!-- Sign Out and Profile Buttons that only show for signed in user -->
-<% if current_user %>
-  <div class="ui buttons">
-    <%= link_to root_path do %>
-      <div class="ui teal button">Home Page</div>
-    <% end %>
-    <div class="or"></div>
-    <%= link_to signout_path do %>
-      <div class="ui button">Sign Out</div>
-    <% end %>
-    <div class="or"></div>
-    <%= link_to user_path(current_user.id) do %>
-      <div class="ui positive button">Profile</div>
-    <% end %>
-  </div>
-<% end %>
+<div class="ui center aligned header">
+  <% if current_user %>
+    <div class="ui buttons">
+      <%= link_to root_path do %>
+        <div class="ui teal button">Home Page</div>
+      <% end %>
+      <div class="or"></div>
+      <%= link_to signout_path do %>
+        <div class="ui button">Sign Out</div>
+      <% end %>
+      <!-- <div class="or"></div>
+      <%= link_to user_path(current_user.id) do %>
+        <div class="ui positive button">Profile</div>
+      <% end %>
+      <div class="or"></div>
+      <%= link_to user_path(current_user.id) do %>
+        <div class="ui purple button">Tools</div>
+      <% end %> -->
+    </div>
+  <% end %>
+</div>
 
 <!-- header with title and green background -->
   <div class= "ui fluid form segment">
@@ -24,9 +30,23 @@
 <!--   Welcome with User Name -->
   <div class="welcome">
     <% if current_user %>
-      <h4> Welcome  <%= current_user.username.titleize %> </h4>
+      <h4> Welcome  <%= current_user.username.titleize %>!</h4>
     <% end %>
   </div>
+
+<!-- Nav Buttons -->
+<% if current_user %>
+  <div class="ui horizontal icon divider">
+    <i class="circular dashboard icon"></i>
+  </div>
+  <div class="ui fluid three item menu form segment">
+    <a class="item"><i class="users icon"></i>Profile</a>
+    <a class="item"><i class="wrench icon"></i>Tools</a>
+    <a class="item"><i class="file outline icon"></i>Blogs</a>
+  </div>
+ <% end %>
+
+
 
 <!-- sign in and sign up: to only be visable to non users -->
 
@@ -35,7 +55,6 @@
     <div class="ui horizontal icon divider">
       <i class="circular twitter icon"></i>
     </div>
-
       <div class="ui center aligned segment">
         <h3 class="ui header">Please Sign in with Twitter</h3>
           <div class="centercolumnbutton">
@@ -59,17 +78,10 @@
 
  <!--  Weather Divider -->
 
+
     <div class="ui horizontal icon divider">
       <i class="circular sun icon"></i>
     </div>
-
-
-<!-- Weather Button -->
-  <div>
-    <%= form_for @weather, :url => url_for(:controller => 'weather', :action => 'create') do |f| %>
-    <% f.submit %>
-    <% end %>
-  </div>
  
 <!--   Weather Forcast -->
       <div class="ui vertically divided grid">
@@ -77,32 +89,32 @@
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Today</h3>
-              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
-              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
+              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Tomorrow</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Next</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Then</h3>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
-              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
+              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
             </div>
           </div>
         </div>
@@ -139,7 +151,6 @@
 
 
 <% end %> <!-- end of current user wrapper -->
-
 
 
 
