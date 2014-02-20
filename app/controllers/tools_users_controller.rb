@@ -6,6 +6,13 @@ class ToolsUsersController < ApplicationController
     redirect_to :user
   end
 
+  def update
+    @tools_users = ToolsUsers.find(params[:id])
+    @tools_users.checkin = Time.now
+    @tools_users.save
+    redirect_to :user
+  end
+
   def current_checkouts
     @tools_users = ToolsUsers.where(["checkin IS NULL"])
   end

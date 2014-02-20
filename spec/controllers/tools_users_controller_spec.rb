@@ -6,7 +6,6 @@ describe ToolsUsersController do
   describe "POST create" do
     let(:valid_attributes) {{tool_id: 1, user_id: 1, checkout: Time.now}}
     let(:invalid_attributes) {{tool_id: 1, user_id: nil, checkout: Time.now}}
-    let(:valid_checkin) {{checkin: Time.now}}
 
     context "with valid attributes" do
       it "saves to the database" do
@@ -57,19 +56,28 @@ describe ToolsUsersController do
   end
 
   describe "PATCH update" do
-    it "correctly locates and assigns the checkout to @tools_users" do
-      patch :update, id: tools_users.id, tools_users: valid_checkin
+    it "correctly locates and assigns the checkin to @tools_users" do
+      @attr = { checkin: Time.now }
+      patch :update, id: tools_users.id, tools_users: @attr
+      tools_users.reload
+
+      expect(assigns(:tools_users)).to eq(tools_users)
+    end
+
+    it "updates the checkout in the database" do
+      @attr = { checkin: Time.now }
+      patch :update, id: tools_users.id, tools_users: @attr
       tools_users.reload
 
       expect(tools_users[:checkin]).to_not be_blank
     end
 
-    it "updates the checkout in the database" do
-      
-    end
-
     it "directs user to their profile page" do
-      
+      @attr = { checkin: Time.now }
+      patch :update, id: tools_users.id, tools_users: @attr
+      tools_users.reload
+
+      expect(response.status).to eq 302
     end
   end
 end
