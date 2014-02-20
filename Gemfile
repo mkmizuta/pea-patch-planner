@@ -33,12 +33,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'simplecov', '~> 0.7.1'
-
-end
-
-group :assets do
   gem 'therubyracer', platforms: :ruby
-  gem 'less-rails'
 end
 
 # Use HTTParty to access Weather API
