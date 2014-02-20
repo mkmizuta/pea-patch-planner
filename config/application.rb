@@ -18,6 +18,8 @@ module PeaPatchPlanner
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
+    config.assets.initialize_on_precompile = false
+
     config.generators do |g|
         g.factory_girl true
     end
