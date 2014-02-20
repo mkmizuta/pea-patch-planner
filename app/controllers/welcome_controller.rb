@@ -1,21 +1,23 @@
 class WelcomeController < ApplicationController
   def index
     @weather = Weather.new
-    check_and_update_weather
+    check_weather
   end
 
-  def check_and_update_weather
+  def check_weather
     if Weather.last
-      old = Weather.last.dt
-      current = Time.now
-      if ((current).minus_with_coercion(old)/3600).round >= 24
-        update_weather
-      end
+      check_time_passed
     else
       update_weather
     end
+  end
 
-
+  def check_time_passed
+    old = Weather.last.dt
+    current = Time.now
+    if ((current).minus_with_coercion(old)/3600).round >= 24
+      update_weather
+    end
   end
 
   def update_weather
