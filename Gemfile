@@ -37,6 +37,10 @@ group :development do
 
 end
 
+group :assets do
+  gem 'therubyracer', platforms: :ruby
+end
+
 # Use HTTParty to access Weather API
 gem "httparty"
 
