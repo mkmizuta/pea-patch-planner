@@ -15,6 +15,8 @@ PeaPatchPlanner::Application.routes.draw do
   get "users/edit", to: "users#edit"
   # get "users/show", to: "users#show", as: :user
   get "users/", to: "users#show", as: :user
+  get "users/index", to: "users#index"
+  patch 'update_user/', to: 'users#update_user'
   
 # remove users create controller specs 
 # go through each spec to see if valid or if not using
