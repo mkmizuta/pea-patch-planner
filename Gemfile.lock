@@ -189,8 +189,6 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
-    semantic-ui-sass (0.13.0.0)
-      sass (~> 3.2)
     simple_calendar (0.1.9)
       rails (>= 3.0)
     simple_oauth (0.2.0)
@@ -262,7 +260,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
-  semantic-ui-sass (~> 0.13.0.0)
   simple_calendar (~> 0.1.9)
   simplecov (~> 0.7.1)
   terminal-notifier-guard

@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'resque'
 # Use HTTParty to access Weather API
 gem "httparty"
-gem 'semantic-ui-sass', '~> 0.13.0.0'
+# gem 'semantic-ui-sass', '~> 0.13.0.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
