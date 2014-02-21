@@ -39,6 +39,6 @@ PeaPatchPlanner::Application.routes.draw do
   post "/tool_checkout", to: 'tools_users#create'
   get  "/tool_checkout/current", to: 'tools_users#current_checkouts'
   get  "/tool_checkout/logs", to: "tools_users#logs"
-  patch "/tool_checkout/:id", to: "tools_users#update"
+  patch "/tool_checkout/:id", to: "tools_users#update", as: :checkout
 end
 

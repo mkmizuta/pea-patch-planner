@@ -15,10 +15,12 @@ class ToolsController < ApplicationController
 
   def show
     @tool = Tool.find(params[:id])
+    @tools_users = ToolsUsers.new
   end
 
   def index
     @tools = Tool.all
+    @tools_users = ToolsUsers.new
   end
 
   def edit
@@ -36,7 +38,8 @@ class ToolsController < ApplicationController
   end
 
   def destroy
-    Tool.find(params[:id]).destroy!
+    @tool = Tool.find(params[:id])
+    @tool.destroy!
 
     redirect_to tools_path
   end

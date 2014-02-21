@@ -1,1 +1,21 @@
 Hello, <%= current_user.username %>!
+<h3>Tools I'm borrowing</h3>
+<% @tools_users.each do |checkout| %>
+  <%= checkout.tool.name %>
+  <%= form_for checkout, :url => checkout_path(checkout) do |f| %>
+
+  <%= f.hidden_field :checkin, value: Time.now %>
+
+  <%= f.submit %>
+  <% end %>
+<% end %>
+
+<h3>Tools I own but lend through Seattle Stone Soup</h3>
+<% @tools.each do |tool| %>
+  <%= tool.name %>
+  <%= form_for tool, :html => {method: :delete} do |f| %>
+  <%= f.submit %>                              
+  <% end %>
+<% end %>
+
+<%#:url => tool_path(tool),%>
