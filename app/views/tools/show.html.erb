@@ -1,8 +1,13 @@
-<%= @tool.name %>
+<h3><%= @tool.name %></h3>
+
 <%= form_for @tools_users, :url => { controller: :tools_users, action: :create } do |f| %>
   <%= f.hidden_field :tool_id, value: @tool.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :checkout, value: Time.now %>
 
   <%= f.submit %>
+<% end %>
+
+<% if @tool.owner == current_user.id %>
+  <%= link_to "Edit This Tool", edit_tool_path(@tool) %>
 <% end %>

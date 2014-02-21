@@ -1,9 +1,11 @@
+<h3>Tools Currently Checked Out</h3>
+
 <% @tools_users.each do |checkout| %>
   <%= checkout.tool.name %>
    <%= form_for checkout, :url => checkout_path(checkout) do |f| %>
 
   <%= f.hidden_field :checkin, value: Time.now %>
 
-  <%= f.submit %>
+  <%= f.submit "Check Tool In"%>
   <% end %>
 <% end %>
