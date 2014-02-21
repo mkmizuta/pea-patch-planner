@@ -1,4 +1,4 @@
-class Twitter < ActiveRecord::Base
+class Twitter #< ActiveRecord::Base
 
   def self.client
     Twitter::REST::Client.new do |config|
