@@ -24,6 +24,7 @@ gem 'omniauth-twitter'
 
 gem "simple_calendar", "~> 0.1.9"
 
+gem 'semantic-ui-rails'
 #semantic ui
  # or any other runtime
 
@@ -48,10 +49,10 @@ group :development do
 end
 
 group :assets do
-  gem 'therubyracer'#, platforms: :ruby
+  gem 'therubyracer', platforms: :ruby
   gem 'less-rails'
   gem 'autoprefixer-rails'
-  gem 'semantic-ui-rails'
+ 
 end
 
 
