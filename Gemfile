@@ -7,32 +7,26 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
-
-
 gem 'pg'
-gem 'rails_12factor'
-
-
-gem 'resque'
+gem 'figaro'
+gem "simple_calendar", "~> 0.1.9"
 # Use HTTParty to access Weather API
 gem "httparty"
-# gem 'semantic-ui-sass', '~> 0.13.0.0'
+gem 'resque'
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
 
-gem 'figaro'
+gem 'rails_12factor'
+
 gem 'twitter','~> 5.7.1' 
 
 gem 'omniauth'
 gem 'omniauth-twitter'
 
-gem "simple_calendar", "~> 0.1.9"
 
-# gem 'semantic-ui-rails'
-#semantic ui
- # or any other runtime
+# gem 'semantic-ui-sass', '~> 0.13.0.0'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 
 group :doc do
