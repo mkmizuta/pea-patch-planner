@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'resque'
 # Use HTTParty to access Weather API
 gem "httparty"
+gem 'semantic-ui-sass', '~> 0.13.0.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
@@ -24,7 +25,7 @@ gem 'omniauth-twitter'
 
 gem "simple_calendar", "~> 0.1.9"
 
-gem 'semantic-ui-rails'
+# gem 'semantic-ui-rails'
 #semantic ui
  # or any other runtime
 
@@ -48,12 +49,12 @@ group :development do
 
 end
 
-group :assets do
-  gem 'therubyracer', platforms: :ruby
-  gem 'less-rails'
-  gem 'autoprefixer-rails'
+# group :assets do
+#   gem 'therubyracer', platforms: :ruby
+#   gem 'less-rails'
+#   gem 'autoprefixer-rails'
  
-end
+# end
 
 
 
