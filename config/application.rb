@@ -20,6 +20,8 @@ module PeaPatchPlanner
 
     config.assets.initialize_on_precompile = false
 
+    config.assets.precompile += %w( asset.js asset.css ) #added this for semantics/heroku
+
     config.generators do |g|
         g.factory_girl true
     end
