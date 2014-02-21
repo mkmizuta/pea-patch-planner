@@ -1,4 +1,4 @@
-
+<div class="ui piled segment">
 <!-- Sign Out and Profile Buttons that only show for signed in user -->
 <div class="ui center aligned header">
   <% if current_user %>
@@ -10,14 +10,6 @@
       <%= link_to signout_path do %>
         <div class="ui button">Sign Out</div>
       <% end %>
-      <!-- <div class="or"></div>
-      <%= link_to user_path(current_user.id) do %>
-        <div class="ui positive button">Profile</div>
-      <% end %>
-      <div class="or"></div>
-      <%= link_to user_path(current_user.id) do %>
-        <div class="ui purple button">Tools</div>
-      <% end %> -->
     </div>
   <% end %>
 </div>
@@ -36,15 +28,18 @@
 
 <!-- Nav Buttons -->
 <% if current_user %>
+
   <div class="ui horizontal icon divider">
-    <i class="circular dashboard icon"></i>
+    <i class="inverted green circular dashboard icon"></i>
   </div>
-  <div class="ui fluid three item menu form segment">
-    <a class="item"><i class="users icon"></i>Profile</a>
-    <a class="item"><i class="wrench icon"></i>Tools</a>
-    <a class="item"><i class="file outline icon"></i>Blogs</a>
-  </div>
- <% end %>
+
+<div class="ui fluid three item menu">
+  <a class="item" href="/users"><i class="ui users icon"></i>Profile</a>
+  <a class="item" href="/tools"><i class="ui wrench icon"></i>Tools</a>
+  <a class="item" href="/blogposts"><i class="file outline icon"></i>Blogs</a>
+</div>
+
+<% end %>
 
 
 
@@ -53,7 +48,7 @@
     <!-- Sign Up with Twitter -->
     <% if current_user.nil? %>
     <div class="ui horizontal icon divider">
-      <i class="circular twitter icon"></i>
+      <i class="inverted green circular twitter icon"></i>
     </div>
       <div class="ui center aligned segment">
         <h3 class="ui header">Please Sign in with Twitter</h3>
@@ -80,7 +75,7 @@
 
 
     <div class="ui horizontal icon divider">
-      <i class="circular sun icon"></i>
+      <i class="inverted green circular sun icon"></i>
     </div>
  
 <!--   Weather Forcast -->
@@ -89,32 +84,32 @@
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Today</h3>
-              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
-              <%= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
+              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["weather"][0]["main"] %>
+              <%#= HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=Seattle&units=imperial").parsed_response["main"]["temp"] %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Tomorrow</h3>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).description %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:0).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Next</h3>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).description %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:1).temp %>
             </div>
           </div>
 
           <div class="column">
             <div class="ui fluid form segment">
               <h3 class="ui header">Then</h3>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
-              <%= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).description %>
+              <%#= DaysWeather.find_by(forecast_association:Weather.last.id, place_value:2).temp %>
             </div>
           </div>
         </div>
@@ -125,33 +120,49 @@
 <!-- calendar time -->
   <!--  Calendar Divider -->
   <div class="ui horizontal icon divider">
-    <i class="circular calendar icon"></i>
+    <i class=" inverted green circular calendar icon"></i>
   </div>
-  <div class="ui fluid form segment">
+  <div class="ui form segment">
+
     <%= calendar @events do |event| %>
-    <div><%= link_to event.title, event %></div>
+    <div><%= link_to event.name, event %></div>
     <% end %>
+
+    <%# @events.each do |event| %>
+  <%#= event.name %>
+<%# end %>
+
+<h3>Upcoming events:</h3>
+<% @events.each do |event| %>
+<%= event.start_time.strftime("%m/%d/%Y")  %>
+<%= link_to event.name, event %><br>
+<% end %>
+
+<h3>Create an Event</h3>
+<%= link_to 'Create a new event!', 'events/new' %>
   </div>
+
+
 
 
 <!-- Pinterest Chunk -->
   <!-- Pin Divider -->
 
   <div class="ui horizontal icon divider">
-    <i class="circular pin icon"></i>
+    <i class="inverted green circular pin icon"></i>
   </div>
     <div>
       <h4>Follow our community Pin Board</h4>
-    <div class="ui center align fluid form segment">
+    <!-- <div class="ui center align form segment"> -->
     <a data-pin-do="embedBoard" href="http://www.pinterest.com/evermasttolast/yard-and-garden/" data-pin-scale-width="100" data-pin-scale-height="200">Follow Abby's board Yard and Garden on Pinterest.</a>
     <!-- Please call pinit.js only once per page -->
     <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
     </div>
-  </div>
+<!--   </div> -->
 
 
 <% end %> <!-- end of current user wrapper -->
-
+</div>
 
 
 <!-- end of log in that is only seen by current user -->

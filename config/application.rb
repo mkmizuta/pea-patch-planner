@@ -5,6 +5,7 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
+# require 'semantic-ui-sass'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -18,10 +19,14 @@ module PeaPatchPlanner
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
+    config.assets.initialize_on_precompile = false
+
+    config.assets.precompile += %w( asset.js asset.css ) #added this for semantics/heroku
+
     config.generators do |g|
         g.factory_girl true
     end
-    
+
     config.generators do |g|
     g.test_framework :rspec,
         fixtures: true,

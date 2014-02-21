@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
+  
   def index
+    @events = Event.all(:order => 'start_time ASC', :limit => 5)
     @weather = Weather.new
     check_weather
   end
@@ -48,4 +50,7 @@ class WelcomeController < ApplicationController
       flash[:notice] = "This day's could not be saved"
     end
   end
+
+
+
 end
