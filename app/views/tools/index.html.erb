@@ -13,3 +13,8 @@
     <% end %>
   <% end %>
 <% end %>
+
+<% if current_user.admin == true %>
+<%= link_to "Currently Checked Out Tools", tool_checkout_current_path %>
+<%= link_to "Full Checkout Logs", tool_checkout_logs_path %>
+<% end %>
