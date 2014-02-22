@@ -8,9 +8,9 @@ class BlogpostsController < ApplicationController
     if @blogpost.save
       User.all.each do |user|
         if user.email
-          UserMailer.newpost(@blogpost.id, user.id).deliver
+          # UserMailer.newpost(@blogpost.id, user.id).deliver
 
-          # Resque.enqueue(NewsJob, @blogpost.id, user.id)
+          Resque.enqueue(NewsJob, @blogpost.id, user.id)
         end
       end
       redirect_to blogpost_path(@blogpost.id)
