@@ -3,6 +3,11 @@ class ToolsUsersController < ApplicationController
   def create
     @tools_users = ToolsUsers.new(checkout_params)
     @tools_users.save
+    
+    @tool = Tool.find(@tools_users.tool_id)
+    @tool.available = false
+    @tool.save
+
     redirect_to :user
   end
 
@@ -10,6 +15,11 @@ class ToolsUsersController < ApplicationController
     @tools_users = ToolsUsers.find(params[:id])
     @tools_users.checkin = Time.now
     @tools_users.save
+
+    @tool = Tool.find(@tools_users.tool_id)
+    @tool.available = true
+    @tool.save
+
     redirect_to :user
   end
 

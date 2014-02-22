@@ -3,11 +3,13 @@
 <% @tools.each do |tool| %>
   <%= link_to tool.name, tool_path(tool) %>
   <br>
-  <%= form_for @tools_users, :url => { controller: :tools_users, action: :create } do |f| %>
-    <%= f.hidden_field :tool_id, value: tool.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :checkout, value: Time.now %>
+  <% if tool.available == true %>
+    <%= form_for @tools_users, :url => { controller: :tools_users, action: :create } do |f| %>
+      <%= f.hidden_field :tool_id, value: tool.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :checkout, value: Time.now %>
 
-    <%= f.submit %>
+      <%= f.submit %>
+    <% end %>
   <% end %>
 <% end %>
