@@ -1,1 +1,1 @@
-require 'semantic-ui-sass'
+# require 'semantic-ui-sass'

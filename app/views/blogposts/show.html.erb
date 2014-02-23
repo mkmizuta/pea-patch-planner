@@ -1,9 +1,12 @@
 <title><% @blogpost.title %></title>
 <div class="ui piled segment">
+  <h3 class="ui right aligned header">
+    <%= link_to('Go Home', root_path)%> | <%= link_to('Go Back', blogposts_path)%>
+  </h3>
   <div class="ui circular segment">
     <h2 class="ui header">
-      Here is <br> your
-      <div class="sub header">BLOG POST</div>
+      Here is <br> the
+      <div class="sub header">NEWS POST</div>
     </h2>
   </div>
 <div class="blogpost" >

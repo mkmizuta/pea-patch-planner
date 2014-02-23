@@ -1,4 +1,15 @@
 PeaPatchPlanner::Application.configure do
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              "smtp.mandrillapp.com",
+  port:                 587,
+  enable_starttls_auto: true,
+  user_name:            ENV["MANDRILL_USERNAME"], # YOUR MANDRILL USERNAME
+  password:             ENV["MANDRILL_PASSWORD"], # A MANDRILL API KEY
+  authentication:       'login',
+  domain:               'SeattleStoneSoup.com'
+}
+  config.action_mailer.default_url_options = { host: 'Seattle-Stone-Soup.herokuapp.com'}
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
