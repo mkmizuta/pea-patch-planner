@@ -12,7 +12,9 @@ gem 'figaro'
 gem "simple_calendar", "~> 0.1.9"
 # Use HTTParty to access Weather API
 gem "httparty"
-gem 'resque'
+gem 'resque', '~> 1.23.0'
+
+gem 'heroku_resque_autoscaler'
 
 
 gem 'rails_12factor'
