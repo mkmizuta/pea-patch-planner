@@ -6,6 +6,13 @@ class BlogpostsController < ApplicationController
   def create
     @blogpost = Blogpost.new(blogpost_params)
     if @blogpost.save
+      User.all.each do |user|
+        if user.email
+          # UserMailer.newpost(@blogpost.id, user.id).deliver
+
+          Resque.enqueue(NewsJob, @blogpost.id, user.id)
+        end
+      end
       redirect_to blogpost_path(@blogpost.id)
       flash[:notice] = "You have created a new blog"
     else

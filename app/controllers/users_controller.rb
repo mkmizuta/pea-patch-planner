@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update(params.require(:user).permit(:email))
       
-      UserMailer.welcome(@user.id).deliver
+      Resque.enqueue(NewsJob, @user.id) if @user.email
       redirect_to :root # current_user
     else
       render :email
