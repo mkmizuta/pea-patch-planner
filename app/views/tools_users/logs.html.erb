@@ -1,0 +1,12 @@
+<h3>Historical Record of All Checkouts</h3>
+
+<% @tools_users.each do |tools_users| %>
+  <% if tools_users.tool %>
+    <%= tools_users.tool.name %>
+  <% else %>
+    <%= "Reclaimed Tool" %>
+  <% end %>
+  <%= tools_users.checkout %>
+  <%= tools_users.checkin %>
+  <br>
+<% end %>

@@ -20,5 +20,13 @@ describe Tool do
       tool.update(owner: nil)
       expect(tool.errors[:owner]).to_not be_empty
     end
+
+    it "responds to tools_users" do
+      expect(tool).to respond_to(:tools_users)
+    end
+
+    it "responds to users through tools" do
+      expect(tool).to respond_to(:users)
+    end
   end
 end

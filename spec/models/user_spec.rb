@@ -59,6 +59,14 @@ describe User do
 
       expect(user.errors[:uid]).to be_empty
     end
+
+    it "responds to tools_users" do
+      expect(user).to respond_to(:tools_users)
+    end
+
+    it "responds to tools through users" do
+      expect(user).to respond_to(:tools)
+    end
   end
 end
 

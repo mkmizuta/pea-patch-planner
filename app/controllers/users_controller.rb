@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @tools = Tool.where(["owner = #{@user.id}"])
+    @tools_users = ToolsUsers.where(["user_id = #{@user.id}" && "checkin IS NULL"])
   end
 
   def edit
