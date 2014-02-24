@@ -1,17 +1,19 @@
-<h3>Borrow tools and comment on blog posts by giving us your email address:</h3>
+<div class="ui piled segment">
+  <h3>Borrow tools and comment on blog posts by giving us your email address:</h3>
 
-<%= form_for @user, url: {action: "update"}  do |f| %>
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <%= form_for @user, url: {action: "update"}  do |f| %>
+    <% if @user.errors.any? %>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
       <% end %>
-    </ul>
-    <% end %>
 
-    <%= f.label :email %> : <br />
-    <%= f.text_field :email %>
-    <br>
-    <%= submit_tag("Let's farm!") %>
+      <%= f.label :email %> : <br />
+      <%= f.text_field :email %>
+      <br>
+      <%= submit_tag("Let's farm!") %>
 
-<% end %>
+  <% end %>
+</div>
