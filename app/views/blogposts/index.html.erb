@@ -10,6 +10,10 @@
     </h2>
   </div>
 
+<% if current_user.admin %>
+  <%= link_to "Create a Post", "blogposts/new" %>
+<% end %>
+
 <div class="ui feed segment">
   <% @blogposts.reverse.each do |post| %>
   <div class="event">

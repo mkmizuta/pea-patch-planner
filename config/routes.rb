@@ -14,6 +14,7 @@ PeaPatchPlanner::Application.routes.draw do
   get "users/", to: "users#show", as: :user
   get "users/index", to: "users#index"
   patch 'update_user/', to: 'users#update_user'
+  get "users/grant_admin/:id", to: "users#grant_admin"
   
   get  '/signin',      to: 'sessions#new',  as: :signin
   post '/signin',      to: 'sessions#create'

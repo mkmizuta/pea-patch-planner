@@ -4,7 +4,7 @@
   <% @tools.each do |tool| %>
     <%= link_to tool.name, tool_path(tool) %>
     <br>
-    <% if tool.available == true %>
+    <% if tool.available %>
       <%= form_for @tools_users, :url => { controller: :tools_users, action: :create } do |f| %>
         <%= f.hidden_field :tool_id, value: tool.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
@@ -15,7 +15,7 @@
     <% end %>
   <% end %>
   <br>
-  <% if current_user.admin == true %>
+  <% if current_user.admin %>
   <%= link_to "Currently Checked Out Tools", tool_checkout_current_path %>
   <br>
   <%= link_to "Full Checkout Logs", tool_checkout_logs_path %>

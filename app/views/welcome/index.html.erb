@@ -119,6 +119,7 @@
 
 <!-- calendar time -->
   <!--  Calendar Divider -->
+  <div class="box">
   <div class="ui horizontal icon divider">
     <i class=" inverted green circular calendar icon"></i>
   </div>
@@ -128,9 +129,6 @@
     <div><%= link_to event.name, event %></div>
     <% end %>
 
-    <%# @events.each do |event| %>
-  <%#= event.name %>
-<%# end %>
 
 <h3>Upcoming events:</h3>
 <% @events.each do |event| %>
@@ -142,12 +140,11 @@
 <%= link_to 'Create a new event!', 'events/new' %>
   </div>
 
-
-
+</div>
 
 <!-- Pinterest Chunk -->
   <!-- Pin Divider -->
-
+<div class= "box">
   <div class="ui horizontal icon divider">
     <i class="inverted green circular pin icon"></i>
   </div>
@@ -163,13 +160,8 @@
 
 <% end %> <!-- end of current user wrapper -->
 </div>
-
+</div>
 
 <!-- end of log in that is only seen by current user -->
 
-  <!-- weather forecast -->
- <!--  current post/comments
-  upcoming events
-  reserve a tool
-  profile page if signed in -->
 

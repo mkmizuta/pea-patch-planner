@@ -28,7 +28,7 @@ gem 'omniauth-twitter'
 # gem 'semantic-ui-sass', '~> 0.13.0.0'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
+# gem 'bcrypt-ruby', '~> 3.1.2'
 
 
 group :doc do
