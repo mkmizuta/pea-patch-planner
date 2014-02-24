@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140222004449) do
     t.datetime "updated_at"
     t.text     "description"
     t.string   "location"
+    t.integer  "user_id"
   end
 
   create_table "tools", force: true do |t|

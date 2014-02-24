@@ -1,4 +1,12 @@
 Hello, <%= current_user.username %>!
+
+<h3>Events you've created</h3>
+<% if current_user.events %>
+  <% current_user.events.each do |event| %>
+  <%= link_to event.name, event %><br>
+  <% end %>
+ <% end %> 
+
 <h3>Tools Currently Checked out</h3>
 <% @tools_users.each do |checkout| %>
   <%= checkout.tool.name %>
