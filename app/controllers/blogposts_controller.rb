@@ -1,4 +1,6 @@
 class BlogpostsController < ApplicationController
+  before_action :check_for_admin, only: [:new, :create, :edit, :destroy]
+
   def new
     @blogpost = Blogpost.new
   end
@@ -48,6 +50,14 @@ class BlogpostsController < ApplicationController
     Blogpost.find(params[:id]).destroy!
 
     redirect_to root_path
+  end
+
+  def check_for_admin
+    if current_user.admin
+      return
+    else
+      redirect_to '/blogposts'
+    end
   end
 
   private

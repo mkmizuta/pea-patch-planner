@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /\w+@+\w+\.+\w+/ }, on: :update
   validates :uid, presence: true, uniqueness: true #, format: { with: /\w+/}
 
+  before_save :check_for_first_user
+
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end
@@ -19,6 +21,12 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.username = auth["info"]["nickname"]
+    end
+  end
+
+  def check_for_first_user
+    if User.all.count == 0
+      self.admin = true
     end
   end
 end

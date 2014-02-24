@@ -1,4 +1,32 @@
+<div class="ui piled segment">
+  <h3 class="ui right aligned header">
+    <%= link_to('Go Home', root_path)%> 
+  </h3>
+
+
+  <div class="ui circular segment">
+    <h2 class="ui header">
+      Here is <br> your
+      <div class="sub header">PROFILE</div>
+    </h2>
+  </div>
+  <br>
+
 Hello, <%= current_user.username %>!
+
+
+<% if current_user.admin %>
+<h3>All Users:</h3>
+  <% @all_users.each do |u| %>
+  <%= u.username %>
+  <% if u.admin %>
+    Admin
+  <% else  %> 
+    <%= link_to "Grant Admin Priviledges", "users/grant_admin/#{u.id}" %>
+    <% end %><br>
+  <% end %>
+<% end %>
+
 
 <h3>Events you've created</h3>
 <% if current_user.events %>
@@ -27,4 +55,4 @@ Hello, <%= current_user.username %>!
 <% end %>
 
 <%= link_to "Lend a Tool", new_tool_path(@tool) %>
-
+</div>
