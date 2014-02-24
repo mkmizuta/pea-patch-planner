@@ -160,4 +160,7 @@ describe ToolsController do
       expect(response.status).to eq(302)
     end
   end
+
+  describe "Checkout Functionality" do
+  end
 end

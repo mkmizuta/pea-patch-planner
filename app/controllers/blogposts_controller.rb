@@ -1,4 +1,6 @@
 class BlogpostsController < ApplicationController
+  before_action :check_for_admin, only: [:new, :create, :edit, :destroy]
+
   def new
     @blogpost = Blogpost.new
   end
@@ -6,6 +8,13 @@ class BlogpostsController < ApplicationController
   def create
     @blogpost = Blogpost.new(blogpost_params)
     if @blogpost.save
+      User.all.each do |user|
+        if user.email
+          # UserMailer.newpost(@blogpost.id, user.id).deliver
+
+          Resque.enqueue(NewsJob, @blogpost.id, user.id)
+        end
+      end
       redirect_to blogpost_path(@blogpost.id)
       flash[:notice] = "You have created a new blog"
     else
@@ -41,6 +50,14 @@ class BlogpostsController < ApplicationController
     Blogpost.find(params[:id]).destroy!
 
     redirect_to root_path
+  end
+
+  def check_for_admin
+    if current_user.admin
+      return
+    else
+      redirect_to '/blogposts'
+    end
   end
 
   private

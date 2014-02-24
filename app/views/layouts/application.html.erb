@@ -4,15 +4,16 @@
     <title>PeaPatchPlanner</title>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application"%>
+    <%= javascript_include_tag "semantic" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     
-    <div class= 'container'>
+    
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
-    </div>
+  
 
     <%= yield %>
 

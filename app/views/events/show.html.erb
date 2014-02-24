@@ -1,0 +1,19 @@
+
+<div class="ui piled segment">
+  <h3 class="ui right aligned header">
+    <%= link_to('Go Home', root_path)%> 
+  </h3>
+  <div class="ui circular segment">
+    <h2 class="ui header">
+      Here is <br> the
+      <div class="sub header">EVENT</div>
+    </h2>
+  </div>
+<div class="blogpost" >
+<h2 class="ui center aligned green header">
+<%= @event.name %> </h2>
+<h4 class="ui top attached header">Event Name: <%= @event.name %></h4>
+<div class="ui segment attached">Date: <%= @event.start_time %></div>
+<div class="ui segment attached">Location: <%= @event.location %></div>
+<div class="ui segment attached">Description: <%= @event.description %></div>
+

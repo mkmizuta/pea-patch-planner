@@ -1,0 +1,36 @@
+<div class="ui piled segment">
+  <h3>Historical Record of All Checkouts</h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Tool Name</td>
+        <td>Checked Out By</td>
+        <td>Checked Out At</td>
+        <td>Checked In At</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @tools_users.reverse.each do |tools_users| %>
+        <td>
+          <% if tools_users.tool %>
+            <%= tools_users.tool.name %>
+          <% else %>
+            <%= "Reclaimed Tool" %>
+          <% end %>
+        </td>
+        <td>
+          <%= tools_users.user.username %>
+        </td>
+        <td>
+          <%= tools_users.checkout %>
+        </td>
+        <td>
+          <%= tools_users.checkin %>
+        </td>
+          
+      </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

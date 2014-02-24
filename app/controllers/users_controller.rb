@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update(params.require(:user).permit(:email))
       
-      UserMailer.welcome(@user.id).deliver
+      Resque.enqueue(NewsJob, @user.id) if @user.email
       redirect_to :root # current_user
     else
       render :email
@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @all_users = User.all
     @user = current_user
+    @tools = Tool.where(["owner = #{@user.id}"])
+    @tools_users = ToolsUsers.where(["user_id = #{@user.id}" && "checkin IS NULL"])
   end
 
   def edit
@@ -20,7 +23,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
   end
 
   def update_user
@@ -38,6 +40,15 @@ class UsersController < ApplicationController
   end
 
   def save_email
+  end
+
+  def grant_admin
+    @user = User.find(params[:id])
+    if current_user.admin
+      @user.admin = true
+      @user.save
+    end
+    redirect_to current_user
   end
 
   private

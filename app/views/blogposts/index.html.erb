@@ -1,10 +1,18 @@
 <div class="ui piled segment">
+  <h3 class="ui right aligned header">
+    <%= link_to('Go Home', root_path)%>
+  </h3>
+
   <div class="ui circular segment">
     <h2 class="ui header">
-      All The <br> Blogs
-      <div class="sub header">Are Below</div>
+      All The <br> News
+      <div class="sub header">is Below</div>
     </h2>
   </div>
+
+<% if current_user.admin %>
+  <%= link_to "Create a Post", "blogposts/new" %>
+<% end %>
 
 <div class="ui feed segment">
   <% @blogposts.reverse.each do |post| %>
@@ -27,10 +35,4 @@
   </div>
    <% end %>
 </div>
-<!--   <% @blogposts.reverse.each do |post| %>
-    <p><%= link_to post.title, blogpost_path(post) %></p>
-    <p> Post ID <%= post.id %> </p>
-    <p> Post Author <%= post.user.username.titleize %>
-    <td><%= link_to 'Show', blogpost_path(post) %></td>
-  <% end %>
-</div> -->
+

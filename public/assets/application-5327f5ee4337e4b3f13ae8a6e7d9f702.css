@@ -1,0 +1,180 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+ *= semantic.css
+ *= require_fonts
+
+ */
+/*
+ body {
+  background: url(http://3.bp.blogspot.com/-_KddICSRuK8/Ug5hEozpQeI/AAAAAAAAKBw/qTxqMciHT6Q/s1600/fruits-and-vegetables.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;    
+    -o-background-size: cover;      
+    background-size: cover;         
+}*/
+
+ 
+ h1, 
+ h2,
+ h3,
+ h4,
+ p,
+.button,
+.or {
+  font-family: Avantgarde, Tahoma, Verdana, sans-serif;
+ }
+
+.centercolumnbutton {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+h1{
+  font-size: 70px;
+  text-align: center;
+}
+.signin {
+  max-width: 400px;
+}
+
+.ui.fluid.segment {
+  border-style: solid;
+  border-width: 2px;
+  -webkit-box-shadow: 10px 10px 5px #C0C0C0 blur;
+  box-shadow: 10px 10px 5px #C0C0C0;
+}
+
+.ui.center.aligned.segment {
+  border-style: solid;
+  border-width: 2px;
+  -webkit-box-shadow: 10px 10px 5px #C0C0C0 blur;
+  box-shadow: 10px 10px 5px #C0C0C0;
+}
+
+
+/*.calendar td { 
+  height: 100px; 
+  width: 14.28%; 
+}*/
+
+/*Calendar*/
+.box {
+  width : 80%;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+th {
+  font         : bold 18px/30px;
+  color        : #000000;
+  background   : #D9E2E1;
+  border-right : 1px solid #A2ADBC;
+  border-bottom: 1px solid #A2ADBC;
+  border-top   : 1px solid #A2ADBC;
+}
+
+.today, td.today.wday-0, td.today.wday-6, td.today a, td.today a:link, td.today a:visited {  /* weekdays */
+  color      : #F6F4DA;
+  font-weight: bold;
+  background : #A1CF64;
+}
+
+td.wday-0, td.wday-6 {   /* weekend */
+  background: #BF8F4F;
+}
+
+.calendar td {
+  border-right  : 1px solid #A2ADBC;
+  border-bottom : 1px solid #A2ADBC;
+  width         : 120px;
+  height        : 120px;
+  vertical-align: top;
+}
+
+td a {
+  text-decoration: none;
+  font-weight    : bold;
+  display        : block;
+}
+
+td a:link, td a:visited { 
+  color: #608194;
+}
+
+td a:hover {
+  color: #6aa3ae;
+}
+
+a.next-month, a.previous-month {
+  padding: 0px 5px;
+}
+
+.wrapper {
+  height        : 100%;
+  padding-bottom: 40px;
+}
+body {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%; }
+/* Elements */
+ 
+@import 'semantic-ui/elements/header.less'; 
+@import 'semantic-ui/elements/progress.less'; 
+@import 'semantic-ui/elements/segment.less'; 
+@import 'semantic-ui/elements/loader.less'; 
+@import 'semantic-ui/elements/step.less'; 
+@import 'semantic-ui/elements/button.less'; 
+@import 'semantic-ui/elements/input.less'; 
+@import 'semantic-ui/elements/label.less'; 
+@import 'semantic-ui/elements/divider.less'; 
+@import 'semantic-ui/elements/image.less'; 
+@import 'semantic-ui/elements/basic.icon.less'; 
+@import 'semantic-ui/elements/reveal.less'; 
+@import 'semantic-ui/elements/icon.less'; 
+
+/* Collections */ 
+@import 'semantic-ui/collections/table.less'; 
+@import 'semantic-ui/collections/breadcrumb.less'; 
+@import 'semantic-ui/collections/message.less'; 
+@import 'semantic-ui/collections/grid.less'; 
+@import 'semantic-ui/collections/menu.less'; 
+@import 'semantic-ui/collections/form.less'; 
+
+/* Views */ 
+@import 'semantic-ui/views/list.less'; 
+@import 'semantic-ui/views/comment.less'; 
+@import 'semantic-ui/views/item.less'; 
+@import 'semantic-ui/views/statistic.less'; 
+@import 'semantic-ui/views/feed.less'; 
+
+/* Modules */ 
+@import 'semantic-ui/modules/popup.less'; 
+@import 'semantic-ui/modules/dimmer.less'; 
+@import 'semantic-ui/modules/rating.less'; 
+@import 'semantic-ui/modules/accordion.less'; 
+@import 'semantic-ui/modules/checkbox.less'; 
+@import 'semantic-ui/modules/search.less'; 
+@import 'semantic-ui/modules/video.less'; 
+@import 'semantic-ui/modules/nag.less'; 
+@import 'semantic-ui/modules/shape.less'; 
+@import 'semantic-ui/modules/modal.less'; 
+@import 'semantic-ui/modules/sidebar.less'; 
+@import 'semantic-ui/modules/tab.less'; 
+@import 'semantic-ui/modules/dropdown.less'; 
+@import 'semantic-ui/modules/chatroom.less'; 
+@import 'semantic-ui/modules/transition.less'; 
+

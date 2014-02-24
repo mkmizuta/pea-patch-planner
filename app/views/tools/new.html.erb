@@ -1,11 +1,17 @@
-<%= form_for @tool do |f| %>
-  <%= f.label :name, "Name:" %>
-  <%= f.text_field :name %>
+<div class="ui piled segment">
 
-  <%= f.label :description, "Description:" %>
-  <%= f.text_area :description %>
+  <h3>Contribute a New Tool</h3>
 
-  <%= f.hidden_field :owner, value: current_user.id %>
-
-  <%= f.submit %>
-<% end %>
+  <%= form_for @tool do |f| %>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name %>
+      <br>
+    <%= f.label :description, "Description:" %>
+    <%= f.text_area :description %>
+      <br>
+    <%= f.hidden_field :owner, value: current_user.id %>
+    <%= f.hidden_field :available, value: true %>
+      <br>
+    <%= f.submit %>
+  <% end %>
+</div>

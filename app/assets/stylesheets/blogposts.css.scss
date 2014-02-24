@@ -8,5 +8,20 @@ body {
   padding-right: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
+  background-image: url("http://simplesuccessforperfectplants.com/images/Retail-Web-Background-2.jpg");
+  background: cover;
+  background-repeat:no-repeat;
+}
+
+.notice {
+  background: { color: #DCDCDC;
+                opacity: 0.2;
+                }
+  width: 300px;
+  margin: auto;
+  font-size: 18px;
+  border-radius: 25px;
+  text-align: center;
+
 }
 
